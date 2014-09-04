@@ -1,0 +1,10 @@
+0.3
+Possibilité d'offset les sources
+
+0.2
+Export AE : Ajout de l'option pour créer la composition dans le projet ouvert
+Export AE : Ajout de l'option pour sauvegarder automatiquement le projet
+Import QTtext : meilleure gestion des timecodes
+
+0.1
+Initial Release
