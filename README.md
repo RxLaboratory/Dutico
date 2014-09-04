@@ -24,3 +24,9 @@ Timecodes gérés par Dutico :
 • Avid Caption Plugin : ce type de timecode est généré par les logiciels de montage Avid, il permet, grâce à un effet sur une piste vidéo dans les logiciels de montage Avid de créer précisément les timecodes que l'on veut (pour du sous-titrage, ou pour toute autre raison qui empèche d'utiliser un EDL ou qui nécessite de changer les timecodes des plans)
 
 • Quicktime Text : ce type de timecode permet d'insérer du texte sur une vidéo Apple Quicktime (pour des sous-titres, des timecodes, des informations...)
+
+
+Developpers:
+====
+
+"jsx" folder contains Adobe Extendscript Files needed to import DTC files in After Effects and convert them to compositions. Those files must be placed inside the installation folder of Dutico, alongside the exe.
