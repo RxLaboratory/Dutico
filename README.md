@@ -30,3 +30,5 @@ Developpers:
 ====
 
 "jsx" folder contains Adobe Extendscript Files needed to import DTC files in After Effects and convert them to compositions. Those files must be placed inside the installation folder of Dutico, alongside the exe.
+
+"resources" folder contains a blank DTC project (.dtcp). It's an SQLite DB.
