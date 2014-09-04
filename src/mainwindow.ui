@@ -1,0 +1,2519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>878</width>
+    <height>647</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dutico 0.3</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="ressources.qrc">
+    <normaloff>:/icons/logo_dev.png</normaloff>:/icons/logo_dev.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QTabWidget" name="tabs">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="documentMode">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="edlTab">
+       <attribute name="icon">
+        <iconset resource="ressources.qrc">
+         <normaloff>:/icons/Document Checklist.png</normaloff>:/icons/Document Checklist.png</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Time codes</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_10">
+        <item>
+         <widget class="QFrame" name="frame">
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QToolButton" name="browseButton">
+             <property name="toolTip">
+              <string>Importer un fichier de timecodes</string>
+             </property>
+             <property name="statusTip">
+              <string>Importation de fichier de timecode ; remplace les timecodes existant.</string>
+             </property>
+             <property name="text">
+              <string>Importer...</string>
+             </property>
+             <property name="icon">
+              <iconset resource="ressources.qrc">
+               <normaloff>:/icons/Document Checklist.png</normaloff>:/icons/Document Checklist.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>32</width>
+               <height>32</height>
+              </size>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextBesideIcon</enum>
+             </property>
+             <property name="autoRaise">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="fusionButton">
+             <property name="toolTip">
+              <string>Fusionner un fichier de timecode</string>
+             </property>
+             <property name="statusTip">
+              <string>Importe un fichier de timecode ; fusionne avec les timecodes existant.</string>
+             </property>
+             <property name="text">
+              <string>Fusionner...</string>
+             </property>
+             <property name="icon">
+              <iconset resource="ressources.qrc">
+               <normaloff>:/icons/Document Checklist.png</normaloff>:/icons/Document Checklist.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>32</width>
+               <height>32</height>
+              </size>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextBesideIcon</enum>
+             </property>
+             <property name="autoRaise">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="removeClipButton">
+             <property name="toolTip">
+              <string>Supprimer les clips sélectionnés</string>
+             </property>
+             <property name="statusTip">
+              <string>Supprime les clips sélectionnés dans la liste.</string>
+             </property>
+             <property name="text">
+              <string>Supprimer...</string>
+             </property>
+             <property name="icon">
+              <iconset resource="ressources.qrc">
+               <normaloff>:/icons/clap_remove.png</normaloff>:/icons/clap_remove.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>32</width>
+               <height>32</height>
+              </size>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextBesideIcon</enum>
+             </property>
+             <property name="autoRaise">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="fpsBox">
+             <property name="minimumSize">
+              <size>
+               <width>75</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Fréquence d'images</string>
+             </property>
+             <property name="statusTip">
+              <string>Change la fréquence d'images.</string>
+             </property>
+             <property name="currentIndex">
+              <number>5</number>
+             </property>
+             <property name="frame">
+              <bool>false</bool>
+             </property>
+             <item>
+              <property name="text">
+               <string>Custom</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>8 fps</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>12 fps</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>15 fps</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>23.976 fps</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>24 fps</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>25 fps</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>29.97 fps</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>30 fps</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>50 fps</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>59.94 fps</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>60 fps</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="fps">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="toolTip">
+              <string>Fréquence d'images</string>
+             </property>
+             <property name="statusTip">
+              <string>Change la fréquence d'images.</string>
+             </property>
+             <property name="frame">
+              <bool>false</bool>
+             </property>
+             <property name="suffix">
+              <string> fps</string>
+             </property>
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="minimum">
+              <double>1.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>100.000000000000000</double>
+             </property>
+             <property name="value">
+              <double>24.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_8">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="edlList">
+          <property name="statusTip">
+           <string>Utilisez le tableau pour inspecter les timecodes chargés. Cliquez pour les sélectionner, double-cliquez pour les modifier.</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::DoubleClicked</set>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="gridStyle">
+           <enum>Qt::DotLine</enum>
+          </property>
+          <property name="sortingEnabled">
+           <bool>true</bool>
+          </property>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>Nom</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>TC In</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>TC Out</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Duration</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Effect</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Comment</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Source IN</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Source OUT</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_10">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <widget class="QTabWidget" name="offsetGroup_3">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="statusTip">
+               <string>Permet de décaler tous les timecodes.</string>
+              </property>
+              <property name="currentIndex">
+               <number>0</number>
+              </property>
+              <property name="documentMode">
+               <bool>true</bool>
+              </property>
+              <widget class="QWidget" name="offsetGroup_3Page1" native="true">
+               <attribute name="title">
+                <string>Offset Montage</string>
+               </attribute>
+               <layout class="QHBoxLayout" name="horizontalLayout_13">
+                <property name="spacing">
+                 <number>6</number>
+                </property>
+                <property name="leftMargin">
+                 <number>6</number>
+                </property>
+                <property name="topMargin">
+                 <number>6</number>
+                </property>
+                <property name="rightMargin">
+                 <number>6</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>6</number>
+                </property>
+                <item>
+                 <widget class="QToolButton" name="detectOffsetButton">
+                  <property name="toolTip">
+                   <string>Détection auto de l'offset</string>
+                  </property>
+                  <property name="statusTip">
+                   <string>Détecte l'offset nécessaire pour que le plus petit timecode soit 00:00:00:00.</string>
+                  </property>
+                  <property name="text">
+                   <string>Détection</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="ressources.qrc">
+                    <normaloff>:/icons/search.png</normaloff>:/icons/search.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>32</width>
+                    <height>32</height>
+                   </size>
+                  </property>
+                  <property name="toolButtonStyle">
+                   <enum>Qt::ToolButtonTextBesideIcon</enum>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSpinBox" name="hours">
+                  <property name="statusTip">
+                   <string>Permet de décaler tous les timecodes. Utilisez une valeur positive ou négative.</string>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                  <property name="suffix">
+                   <string> h</string>
+                  </property>
+                  <property name="minimum">
+                   <number>-99</number>
+                  </property>
+                  <property name="value">
+                   <number>0</number>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSpinBox" name="seconds">
+                  <property name="statusTip">
+                   <string>Permet de décaler tous les timecodes. Utilisez une valeur positive ou négative.</string>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                  <property name="suffix">
+                   <string> s</string>
+                  </property>
+                  <property name="minimum">
+                   <number>-99</number>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSpinBox" name="minutes">
+                  <property name="statusTip">
+                   <string>Permet de décaler tous les timecodes. Utilisez une valeur positive ou négative.</string>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                  <property name="suffix">
+                   <string> mn</string>
+                  </property>
+                  <property name="minimum">
+                   <number>-99</number>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSpinBox" name="frames">
+                  <property name="statusTip">
+                   <string>Permet de décaler tous les timecodes. Utilisez une valeur positive ou négative.</string>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                  <property name="suffix">
+                   <string> f</string>
+                  </property>
+                  <property name="minimum">
+                   <number>-99</number>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="applyOffsetButton">
+                  <property name="statusTip">
+                   <string>Permet de décaler tous les timecodes.</string>
+                  </property>
+                  <property name="text">
+                   <string>Appliquer</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="ressources.qrc">
+                    <normaloff>:/icons/dialog_apply.png</normaloff>:/icons/dialog_apply.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>32</width>
+                    <height>32</height>
+                   </size>
+                  </property>
+                  <property name="toolButtonStyle">
+                   <enum>Qt::ToolButtonTextBesideIcon</enum>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="tab">
+               <attribute name="title">
+                <string>Offset Sources</string>
+               </attribute>
+               <layout class="QHBoxLayout" name="horizontalLayout_14">
+                <item>
+                 <widget class="QSpinBox" name="hoursS">
+                  <property name="statusTip">
+                   <string>Permet de décaler tous les timecodes. Utilisez une valeur positive ou négative.</string>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                  <property name="suffix">
+                   <string> h</string>
+                  </property>
+                  <property name="minimum">
+                   <number>-99</number>
+                  </property>
+                  <property name="value">
+                   <number>0</number>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSpinBox" name="minutesS">
+                  <property name="statusTip">
+                   <string>Permet de décaler tous les timecodes. Utilisez une valeur positive ou négative.</string>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                  <property name="suffix">
+                   <string> mn</string>
+                  </property>
+                  <property name="minimum">
+                   <number>-99</number>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSpinBox" name="secondsS">
+                  <property name="statusTip">
+                   <string>Permet de décaler tous les timecodes. Utilisez une valeur positive ou négative.</string>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                  <property name="suffix">
+                   <string> s</string>
+                  </property>
+                  <property name="minimum">
+                   <number>-99</number>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSpinBox" name="framesS">
+                  <property name="statusTip">
+                   <string>Permet de décaler tous les timecodes. Utilisez une valeur positive ou négative.</string>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                  <property name="suffix">
+                   <string> f</string>
+                  </property>
+                  <property name="minimum">
+                   <number>-99</number>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="applyOffsetSButton">
+                  <property name="statusTip">
+                   <string>Permet de décaler tous les timecodes.</string>
+                  </property>
+                  <property name="text">
+                   <string>Appliquer</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="ressources.qrc">
+                    <normaloff>:/icons/dialog_apply.png</normaloff>:/icons/dialog_apply.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>32</width>
+                    <height>32</height>
+                   </size>
+                  </property>
+                  <property name="toolButtonStyle">
+                   <enum>Qt::ToolButtonTextBesideIcon</enum>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="offsetGroup_2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="title">
+             <string>Options</string>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+            <property name="checked">
+             <bool>false</bool>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_6">
+             <item>
+              <layout class="QFormLayout" name="formLayout_2">
+               <property name="fieldGrowthPolicy">
+                <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label">
+                 <property name="statusTip">
+                  <string>Indiquez ici la colonne qui contient le noms des clips, utile pour trouver les médias.</string>
+                 </property>
+                 <property name="text">
+                  <string>Colonne contenant les noms de plans :</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QComboBox" name="nameColumnBox">
+                 <property name="statusTip">
+                  <string>Indiquez ici la colonne qui contient le noms des clips, utile pour trouver les médias.</string>
+                 </property>
+                 <property name="frame">
+                  <bool>false</bool>
+                 </property>
+                 <item>
+                  <property name="text">
+                   <string>Name</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Comment</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="lineCommentLabel">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="statusTip">
+                  <string>Si les noms des clips sont dans la colonne 'Commentaire', indiquez ici sur quelle ligne.</string>
+                 </property>
+                 <property name="text">
+                  <string>Ligne des commentaires contenant les noms :</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QSpinBox" name="lineCommentSpinner">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="statusTip">
+                  <string>Si les noms des clips sont dans la colonne 'Commentaire', indiquez ici sur quelle ligne.</string>
+                 </property>
+                 <property name="frame">
+                  <bool>false</bool>
+                 </property>
+                 <property name="minimum">
+                  <number>1</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_7">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QToolButton" name="edlNextButton">
+            <property name="statusTip">
+             <string>Accédez à la préparation des médias.</string>
+            </property>
+            <property name="text">
+             <string>Suivant</string>
+            </property>
+            <property name="icon">
+             <iconset resource="ressources.qrc">
+              <normaloff>:/icons/Arrow Right.png</normaloff>:/icons/Arrow Right.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextUnderIcon</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="layersTab">
+       <attribute name="icon">
+        <iconset resource="ressources.qrc">
+         <normaloff>:/icons/video2.png</normaloff>:/icons/video2.png</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Medias</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <property name="spacing">
+         <number>3</number>
+        </property>
+        <property name="leftMargin">
+         <number>6</number>
+        </property>
+        <property name="topMargin">
+         <number>6</number>
+        </property>
+        <property name="rightMargin">
+         <number>6</number>
+        </property>
+        <property name="bottomMargin">
+         <number>6</number>
+        </property>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QToolButton" name="addLayerButton">
+            <property name="toolTip">
+             <string>Ajouter une couche</string>
+            </property>
+            <property name="statusTip">
+             <string>Ajoute une couche de médias (correspond à un calque dans After Effects).</string>
+            </property>
+            <property name="text">
+             <string>Ajouter...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="ressources.qrc">
+              <normaloff>:/icons/layersadd.png</normaloff>:/icons/layersadd.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="upButton">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="toolTip">
+             <string>Monter</string>
+            </property>
+            <property name="statusTip">
+             <string>Monte la couche sélectionnée dans la pile.</string>
+            </property>
+            <property name="text">
+             <string>Monter</string>
+            </property>
+            <property name="icon">
+             <iconset resource="ressources.qrc">
+              <normaloff>:/icons/Arrow Up.png</normaloff>:/icons/Arrow Up.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonIconOnly</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="downButton">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="toolTip">
+             <string>Descendre</string>
+            </property>
+            <property name="statusTip">
+             <string>Descend la couche sélectionnée dans la pile.</string>
+            </property>
+            <property name="text">
+             <string>Descendre</string>
+            </property>
+            <property name="icon">
+             <iconset resource="ressources.qrc">
+              <normaloff>:/icons/Arrow Down.png</normaloff>:/icons/Arrow Down.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonIconOnly</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="editLayerButton">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="toolTip">
+             <string>Editer la couche</string>
+            </property>
+            <property name="statusTip">
+             <string>Edite la couche sélectionnée.</string>
+            </property>
+            <property name="text">
+             <string>Editer...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="ressources.qrc">
+              <normaloff>:/icons/layersedit.png</normaloff>:/icons/layersedit.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="disableLayerButton">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="toolTip">
+             <string>Activer/désactiver la couche</string>
+            </property>
+            <property name="statusTip">
+             <string>Active/désactive la couche sélectionnée.</string>
+            </property>
+            <property name="text">
+             <string>Désactiver</string>
+            </property>
+            <property name="icon">
+             <iconset resource="ressources.qrc">
+              <normaloff>:/icons/layersdisable.png</normaloff>:/icons/layersdisable.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="removeLayerButton">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="toolTip">
+             <string>Supprimer la couche</string>
+            </property>
+            <property name="statusTip">
+             <string>Supprime la couche sélectionnée.</string>
+            </property>
+            <property name="text">
+             <string>Supprimer...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="ressources.qrc">
+              <normaloff>:/icons/layersremove.png</normaloff>:/icons/layersremove.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="layersList">
+          <property name="statusTip">
+           <string>Utilisez ce tableau pour gérer les couches. Cliquez pour les sélectionner, double-cliquez pour les éditer.</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="gridStyle">
+           <enum>Qt::DotLine</enum>
+          </property>
+          <property name="sortingEnabled">
+           <bool>true</bool>
+          </property>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>Type</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Nom</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Chemin</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Récursif</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Fichiers</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Séquences</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Actif</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="leftMargin">
+           <number>3</number>
+          </property>
+          <property name="topMargin">
+           <number>3</number>
+          </property>
+          <property name="rightMargin">
+           <number>3</number>
+          </property>
+          <property name="bottomMargin">
+           <number>3</number>
+          </property>
+          <item>
+           <widget class="QToolButton" name="previousLayersButton">
+            <property name="toolTip">
+             <string>Retour</string>
+            </property>
+            <property name="statusTip">
+             <string>Retour à la gestion des timecodes.</string>
+            </property>
+            <property name="text">
+             <string>Précédent</string>
+            </property>
+            <property name="icon">
+             <iconset resource="ressources.qrc">
+              <normaloff>:/icons/Arrow Left.png</normaloff>:/icons/Arrow Left.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextUnderIcon</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QToolButton" name="nextLayersButton">
+            <property name="toolTip">
+             <string>Suite</string>
+            </property>
+            <property name="statusTip">
+             <string>Accéder aux exports.</string>
+            </property>
+            <property name="text">
+             <string>Suivant</string>
+            </property>
+            <property name="icon">
+             <iconset resource="ressources.qrc">
+              <normaloff>:/icons/Arrow Right.png</normaloff>:/icons/Arrow Right.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextUnderIcon</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="exportTab">
+       <attribute name="icon">
+        <iconset resource="ressources.qrc">
+         <normaloff>:/icons/video.png</normaloff>:/icons/video.png</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Export</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_8">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_9">
+          <item>
+           <widget class="QToolButton" name="aeButton">
+            <property name="statusTip">
+             <string>Active les exports vers After Effects.</string>
+            </property>
+            <property name="text">
+             <string>After Effects</string>
+            </property>
+            <property name="icon">
+             <iconset resource="ressources.qrc">
+              <normaloff>:/icons/video.png</normaloff>:/icons/video.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="qtButton">
+            <property name="statusTip">
+             <string>Active les exports en Quicktime text.</string>
+            </property>
+            <property name="text">
+             <string>Quicktime text</string>
+            </property>
+            <property name="icon">
+             <iconset resource="ressources.qrc">
+              <normaloff>:/icons/Document Checklist.png</normaloff>:/icons/Document Checklist.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="acpButton">
+            <property name="statusTip">
+             <string>Active les exports en Avid Caption Plugin.</string>
+            </property>
+            <property name="text">
+             <string>Avid Caption Plugin</string>
+            </property>
+            <property name="icon">
+             <iconset resource="ressources.qrc">
+              <normaloff>:/icons/Document Checklist.png</normaloff>:/icons/Document Checklist.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="edlButton">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="statusTip">
+             <string>Active les exports en Edit Decision List (EDL). (Pas disponible dans cette version)</string>
+            </property>
+            <property name="text">
+             <string>Edit Decision List (EDL)</string>
+            </property>
+            <property name="icon">
+             <iconset resource="ressources.qrc">
+              <normaloff>:/icons/Document Checklist.png</normaloff>:/icons/Document Checklist.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTabWidget" name="exportTabs">
+          <property name="tabPosition">
+           <enum>QTabWidget::West</enum>
+          </property>
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>16</width>
+            <height>16</height>
+           </size>
+          </property>
+          <widget class="QWidget" name="tabAE">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <attribute name="icon">
+            <iconset resource="ressources.qrc">
+             <normaloff>:/icons/video.png</normaloff>:/icons/video.png</iconset>
+           </attribute>
+           <attribute name="title">
+            <string>After Effects</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <item>
+             <widget class="QWidget" name="exportAEWidget" native="true">
+              <layout class="QFormLayout" name="formLayout_3">
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_2">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="statusTip">
+                  <string>Définissez ici comment est choisie la durée des plans : respect des timecodes, ou priorité à une couche.</string>
+                 </property>
+                 <property name="text">
+                  <string>Durée des plans</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QComboBox" name="durationBox">
+                 <property name="minimumSize">
+                  <size>
+                   <width>200</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="statusTip">
+                  <string>Définissez ici comment est choisie la durée des plans : respect des timecodes, ou priorité à une couche.</string>
+                 </property>
+                 <property name="frame">
+                  <bool>false</bool>
+                 </property>
+                 <item>
+                  <property name="text">
+                   <string>Timecodes</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_5">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="statusTip">
+                  <string>Choisissez ici quel son est utilisé.</string>
+                 </property>
+                 <property name="text">
+                  <string>Son</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QComboBox" name="soundBox">
+                 <property name="minimumSize">
+                  <size>
+                   <width>200</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="statusTip">
+                  <string>Choisissez ici quel son est utilisé.</string>
+                 </property>
+                 <property name="frame">
+                  <bool>false</bool>
+                 </property>
+                 <item>
+                  <property name="text">
+                   <string>Pas de son</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_9">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="statusTip">
+                  <string>Vous pouvez précomposer automatiquement les différents calques composant les clips (medias et timecodes)</string>
+                 </property>
+                 <property name="text">
+                  <string>Précomposer</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QCheckBox" name="precomposeButton">
+                 <property name="statusTip">
+                  <string>Vous pouvez précomposer automatiquement les différents calques composant les clips (medias et timecodes)</string>
+                 </property>
+                 <property name="text">
+                  <string>Chaque plan</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="label_6">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="statusTip">
+                  <string>Choisissez ici la résolution de la composition : personnalisée ou identique au premier clip de la couche demandée.</string>
+                 </property>
+                 <property name="text">
+                  <string>Résolution</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QFrame" name="frame_2">
+                 <property name="frameShape">
+                  <enum>QFrame::Panel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Sunken</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_5">
+                  <property name="leftMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>2</number>
+                  </property>
+                  <item>
+                   <widget class="QComboBox" name="resolutionBox">
+                    <property name="minimumSize">
+                     <size>
+                      <width>200</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="statusTip">
+                     <string>Choisissez ici la résolution de la composition : personnalisée ou identique au premier clip de la couche demandée.</string>
+                    </property>
+                    <property name="frame">
+                     <bool>false</bool>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>Personnalisée</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                  <item>
+                   <layout class="QFormLayout" name="formLayout">
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="label_4">
+                      <property name="statusTip">
+                       <string>Choisissez ici la résolution de la composition : personnalisée ou identique au premier clip de la couche demandée.</string>
+                      </property>
+                      <property name="text">
+                       <string>Largeur :</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="label_3">
+                      <property name="statusTip">
+                       <string>Choisissez ici la résolution de la composition : personnalisée ou identique au premier clip de la couche demandée.</string>
+                      </property>
+                      <property name="text">
+                       <string>Hauteur :</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="1">
+                     <widget class="QSpinBox" name="heightBox">
+                      <property name="statusTip">
+                       <string>Choisissez ici la résolution de la composition : personnalisée ou identique au premier clip de la couche demandée.</string>
+                      </property>
+                      <property name="frame">
+                       <bool>false</bool>
+                      </property>
+                      <property name="suffix">
+                       <string> px</string>
+                      </property>
+                      <property name="maximum">
+                       <number>10000</number>
+                      </property>
+                      <property name="value">
+                       <number>720</number>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="1">
+                     <widget class="QSpinBox" name="widthBox">
+                      <property name="statusTip">
+                       <string>Choisissez ici la résolution de la composition : personnalisée ou identique au premier clip de la couche demandée.</string>
+                      </property>
+                      <property name="frame">
+                       <bool>false</bool>
+                      </property>
+                      <property name="suffix">
+                       <string> px</string>
+                      </property>
+                      <property name="maximum">
+                       <number>10000</number>
+                      </property>
+                      <property name="value">
+                       <number>1280</number>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QCheckBox" name="proportionsButton">
+                    <property name="statusTip">
+                     <string>Choisissez ici la résolution de la composition : personnalisée ou identique au premier clip de la couche demandée.</string>
+                    </property>
+                    <property name="text">
+                     <string>Conserver les proportions</string>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_6">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="label_7">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="statusTip">
+                  <string>Vous pouvez incruster des informations dans la vidéo (utilise des calques textes dans After Effects).</string>
+                 </property>
+                 <property name="text">
+                  <string>Incrustations</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QFrame" name="frame">
+                 <property name="frameShape">
+                  <enum>QFrame::Panel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Sunken</enum>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_4">
+                  <property name="leftMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>2</number>
+                  </property>
+                  <item>
+                   <widget class="QCheckBox" name="bitcNameBox">
+                    <property name="statusTip">
+                     <string>Incruster les noms.</string>
+                    </property>
+                    <property name="text">
+                     <string>Noms</string>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QCheckBox" name="bitcShotsTCBox">
+                    <property name="statusTip">
+                     <string>Incruster les timecodes des plans, en images.</string>
+                    </property>
+                    <property name="text">
+                     <string>Timecodes des plans (en images)</string>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QCheckBox" name="bitcTCBox">
+                    <property name="statusTip">
+                     <string>Incruster un timecode général.</string>
+                    </property>
+                    <property name="text">
+                     <string>Timecode général</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QLabel" name="label_10">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Projet</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="0">
+                <widget class="QLabel" name="label_8">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="statusTip">
+                  <string>Vous pouvez lancer automatiquement le rendu dès que la composition est crée. Le rendu utilisera le paramètre prédéfini nommé &quot;dutico&quot; si il existe.</string>
+                 </property>
+                 <property name="text">
+                  <string>Rendu</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="1">
+                <widget class="QCheckBox" name="renderBox">
+                 <property name="statusTip">
+                  <string>Vous pouvez lancer automatiquement le rendu dès que la composition est crée. Le rendu utilisera le paramètre prédéfini nommé &quot;dutico&quot; si il existe.</string>
+                 </property>
+                 <property name="text">
+                  <string>Lancer le rendu immédiatement</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="1">
+                <widget class="QFrame" name="frame">
+                 <property name="frameShape">
+                  <enum>QFrame::Panel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Sunken</enum>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_9">
+                  <property name="leftMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>2</number>
+                  </property>
+                  <item>
+                   <widget class="QRadioButton" name="currentAEPBox">
+                    <property name="statusTip">
+                     <string>Crée la nouvelle composition dans le projet actuellement ouvert.</string>
+                    </property>
+                    <property name="text">
+                     <string>Importer dans le projet ouvert</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_12">
+                    <item>
+                     <widget class="QRadioButton" name="newAEPBox">
+                      <property name="statusTip">
+                       <string>Crée un nouveau projet After Effects</string>
+                      </property>
+                      <property name="text">
+                       <string>Créer un nouveau projet</string>
+                      </property>
+                      <property name="checked">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QCheckBox" name="saveAEPBox">
+                      <property name="statusTip">
+                       <string>Enregistre automatiquement le projet après la création.</string>
+                      </property>
+                      <property name="text">
+                       <string>Et l'enregistrer automatiquement</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_10">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tabQT">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <attribute name="icon">
+            <iconset resource="ressources.qrc">
+             <normaloff>:/icons/Document Checklist.png</normaloff>:/icons/Document Checklist.png</iconset>
+           </attribute>
+           <attribute name="title">
+            <string>Quicktime Text</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <item>
+             <widget class="QWidget" name="exportQTTextWidget" native="true">
+              <layout class="QFormLayout" name="formLayout_4">
+               <property name="fieldGrowthPolicy">
+                <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+               </property>
+               <property name="labelAlignment">
+                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+               </property>
+               <property name="formAlignment">
+                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+               </property>
+               <property name="verticalSpacing">
+                <number>12</number>
+               </property>
+               <property name="leftMargin">
+                <number>3</number>
+               </property>
+               <property name="topMargin">
+                <number>5</number>
+               </property>
+               <property name="rightMargin">
+                <number>3</number>
+               </property>
+               <property name="bottomMargin">
+                <number>3</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_12">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="statusTip">
+                  <string>Vous pouvez choisir la taille du bloc de texte dans Quicktime.</string>
+                 </property>
+                 <property name="text">
+                  <string>Taille du bloc</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QFrame" name="frame_4">
+                 <property name="frameShape">
+                  <enum>QFrame::Panel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Sunken</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_11">
+                  <property name="leftMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>2</number>
+                  </property>
+                  <item>
+                   <layout class="QFormLayout" name="formLayout_5">
+                    <item row="1" column="1">
+                     <widget class="QSpinBox" name="qtHeightSpinner">
+                      <property name="statusTip">
+                       <string>Vous pouvez choisir la taille du bloc de texte dans Quicktime.</string>
+                      </property>
+                      <property name="frame">
+                       <bool>false</bool>
+                      </property>
+                      <property name="suffix">
+                       <string> px</string>
+                      </property>
+                      <property name="maximum">
+                       <number>10000</number>
+                      </property>
+                      <property name="value">
+                       <number>20</number>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="0">
+                     <widget class="QLabel" name="label_16">
+                      <property name="statusTip">
+                       <string>Vous pouvez choisir la taille du bloc de texte dans Quicktime.</string>
+                      </property>
+                      <property name="text">
+                       <string>Hauteur :</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="label_15">
+                      <property name="statusTip">
+                       <string>Vous pouvez choisir la taille du bloc de texte dans Quicktime.</string>
+                      </property>
+                      <property name="text">
+                       <string>Largeur :</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="1">
+                     <widget class="QSpinBox" name="qtWidthSpinner">
+                      <property name="statusTip">
+                       <string>Vous pouvez choisir la taille du bloc de texte dans Quicktime.</string>
+                      </property>
+                      <property name="frame">
+                       <bool>false</bool>
+                      </property>
+                      <property name="suffix">
+                       <string> px</string>
+                      </property>
+                      <property name="maximum">
+                       <number>10000</number>
+                      </property>
+                      <property name="value">
+                       <number>200</number>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QCheckBox" name="proportionsButton_2">
+                    <property name="statusTip">
+                     <string>Vous pouvez choisir la taille du bloc de texte dans Quicktime.</string>
+                    </property>
+                    <property name="text">
+                     <string>Conserver les proportions</string>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_9">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_13">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="statusTip">
+                  <string>Vous pouvez choisir la taille du texte dans Quicktime.</string>
+                 </property>
+                 <property name="text">
+                  <string>Taille du texte</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QSpinBox" name="qtTextSizeSpinner">
+                 <property name="statusTip">
+                  <string>Vous pouvez choisir la taille du texte dans Quicktime.</string>
+                 </property>
+                 <property name="frame">
+                  <bool>false</bool>
+                 </property>
+                 <property name="minimum">
+                  <number>6</number>
+                 </property>
+                 <property name="maximum">
+                  <number>72</number>
+                 </property>
+                 <property name="value">
+                  <number>12</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_17">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="statusTip">
+                  <string>Plutôt que de générer la liste des noms, vous pouvez générer un compteur d'images de chaque plan (timecode).</string>
+                 </property>
+                 <property name="text">
+                  <string>Compteur</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QFrame" name="frame_5">
+                 <property name="frameShape">
+                  <enum>QFrame::Panel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Sunken</enum>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_5">
+                  <property name="leftMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>2</number>
+                  </property>
+                  <item>
+                   <widget class="QCheckBox" name="qtCounterBox">
+                    <property name="statusTip">
+                     <string>Plutôt que de générer la liste des noms, vous pouvez générer un compteur d'images de chaque plan (timecode).</string>
+                    </property>
+                    <property name="text">
+                     <string>Générer un compteur d'images</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QCheckBox" name="qtCounterBox1">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="statusTip">
+                     <string>Le compteur d'images doit-il commencer à 1 ou à 0 ?</string>
+                    </property>
+                    <property name="text">
+                     <string>Commencer à l'image 1 (au lieu de 0)</string>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_7">
+          <property name="leftMargin">
+           <number>3</number>
+          </property>
+          <property name="topMargin">
+           <number>3</number>
+          </property>
+          <property name="rightMargin">
+           <number>3</number>
+          </property>
+          <property name="bottomMargin">
+           <number>3</number>
+          </property>
+          <item>
+           <widget class="QToolButton" name="previousExportButton">
+            <property name="statusTip">
+             <string>Revenir à la gestion des medias.</string>
+            </property>
+            <property name="text">
+             <string>Précédent</string>
+            </property>
+            <property name="icon">
+             <iconset resource="ressources.qrc">
+              <normaloff>:/icons/Arrow Left.png</normaloff>:/icons/Arrow Left.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextUnderIcon</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QToolButton" name="exportBrowseButton">
+            <property name="statusTip">
+             <string>Choisir le dossier de destination des exports.</string>
+            </property>
+            <property name="text">
+             <string>Parcourir...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="ressources.qrc">
+              <normaloff>:/icons/savevideo.png</normaloff>:/icons/savevideo.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="exportNameEdit">
+            <property name="statusTip">
+             <string>Dossier de destination des exports.</string>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="placeholderText">
+             <string>Chemin d'exportation</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="exportNameEdit_2">
+            <property name="statusTip">
+             <string>Nom des exports.</string>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="placeholderText">
+             <string>Nom des exports</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="exportButton">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="statusTip">
+             <string>Lancer l'exportation.</string>
+            </property>
+            <property name="text">
+             <string>Exporter</string>
+            </property>
+            <property name="icon">
+             <iconset resource="ressources.qrc">
+              <normaloff>:/icons/video.png</normaloff>:/icons/video.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextUnderIcon</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>878</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="nativeMenuBar">
+    <bool>true</bool>
+   </property>
+   <widget class="QMenu" name="menuFichier">
+    <property name="title">
+     <string>&amp;Fichier</string>
+    </property>
+    <addaction name="actionNouveau"/>
+    <addaction name="actionOuvrir"/>
+    <addaction name="separator"/>
+    <addaction name="actionEnregistrer"/>
+    <addaction name="actionEnregistrer_sous"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuitter"/>
+   </widget>
+   <widget class="QMenu" name="menuEdition">
+    <property name="title">
+     <string>Edition</string>
+    </property>
+    <addaction name="actionPr_f_rences"/>
+   </widget>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>?</string>
+    </property>
+    <property name="icon">
+     <iconset resource="ressources.qrc">
+      <normaloff>:/icons/tout_petit_logo.png</normaloff>:/icons/tout_petit_logo.png</iconset>
+    </property>
+    <addaction name="actionAbout"/>
+    <addaction name="actionAbout_Qt"/>
+   </widget>
+   <widget class="QMenu" name="menuTime_codes">
+    <property name="title">
+     <string>Timecodes</string>
+    </property>
+    <addaction name="actionCharger_un_EDL"/>
+    <addaction name="actionFusionner_un_fichier_de_Timecodes"/>
+    <addaction name="separator"/>
+    <addaction name="actionSupprimer_les_clips"/>
+   </widget>
+   <widget class="QMenu" name="menuLayers">
+    <property name="title">
+     <string>Medias</string>
+    </property>
+    <addaction name="actionAjouter_une_couche"/>
+   </widget>
+   <widget class="QMenu" name="menuExport">
+    <property name="title">
+     <string>Export</string>
+    </property>
+    <addaction name="actionExporter"/>
+    <addaction name="separator"/>
+    <addaction name="actionAfter_Effects"/>
+    <addaction name="actionQuicktime_text"/>
+    <addaction name="actionAvid_Caption_Plugin"/>
+    <addaction name="actionEdit_Decision_List_EDL"/>
+   </widget>
+   <addaction name="menuFichier"/>
+   <addaction name="menuEdition"/>
+   <addaction name="menuTime_codes"/>
+   <addaction name="menuLayers"/>
+   <addaction name="menuExport"/>
+   <addaction name="menu"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="statusTip">
+    <string/>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>32</width>
+     <height>32</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextBesideIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionNouveau"/>
+   <addaction name="actionOuvrir"/>
+   <addaction name="separator"/>
+   <addaction name="actionEnregistrer"/>
+   <addaction name="actionEnregistrer_sous"/>
+   <addaction name="separator"/>
+   <addaction name="actionPr_f_rences"/>
+   <addaction name="separator"/>
+   <addaction name="actionQuitter"/>
+   <addaction name="separator"/>
+   <addaction name="actionAbout"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionQuitter">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/Stop.png</normaloff>:/icons/Stop.png</iconset>
+   </property>
+   <property name="text">
+    <string>Quitter</string>
+   </property>
+   <property name="toolTip">
+    <string>Quitte l'application</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionOuvrir">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/folder_open.png</normaloff>:/icons/folder_open.png</iconset>
+   </property>
+   <property name="text">
+    <string>Ouvrir...</string>
+   </property>
+   <property name="statusTip">
+    <string/>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionEnregistrer_sous">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/saveas.png</normaloff>:/icons/saveas.png</iconset>
+   </property>
+   <property name="text">
+    <string>Enregistrer sous...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="actionEnregistrer">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/save.png</normaloff>:/icons/save.png</iconset>
+   </property>
+   <property name="text">
+    <string>Enregistrer</string>
+   </property>
+   <property name="iconText">
+    <string>Enregistrer</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionNouveau">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/File Add.png</normaloff>:/icons/File Add.png</iconset>
+   </property>
+   <property name="text">
+    <string>Nouveau...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionCharger_un_EDL">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/Document Checklist.png</normaloff>:/icons/Document Checklist.png</iconset>
+   </property>
+   <property name="text">
+    <string>Importer un fichier de Timecodes...</string>
+   </property>
+   <property name="iconText">
+    <string>Timecodes</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="actionExporter">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/video.png</normaloff>:/icons/video.png</iconset>
+   </property>
+   <property name="text">
+    <string>Exporter</string>
+   </property>
+  </action>
+  <action name="actionAjouter_une_couche">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/layersadd.png</normaloff>:/icons/layersadd.png</iconset>
+   </property>
+   <property name="text">
+    <string>Ajouter une couche...</string>
+   </property>
+   <property name="iconText">
+    <string>Couche</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="actionAbout_Qt">
+   <property name="text">
+    <string>A propos de Qt...</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/tout_petit_logo.png</normaloff>:/icons/tout_petit_logo.png</iconset>
+   </property>
+   <property name="text">
+    <string>A propos...</string>
+   </property>
+   <property name="iconText">
+    <string>A Propos</string>
+   </property>
+  </action>
+  <action name="actionPr_f_rences">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/cog.png</normaloff>:/icons/cog.png</iconset>
+   </property>
+   <property name="text">
+    <string>Préférences...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="actionAfter_Effects">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/video.png</normaloff>:/icons/video.png</iconset>
+   </property>
+   <property name="text">
+    <string>After Effects</string>
+   </property>
+  </action>
+  <action name="actionQuicktime_text">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/Document Checklist.png</normaloff>:/icons/Document Checklist.png</iconset>
+   </property>
+   <property name="text">
+    <string>Quicktime text</string>
+   </property>
+  </action>
+  <action name="actionAvid_Caption_Plugin">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/Document Checklist.png</normaloff>:/icons/Document Checklist.png</iconset>
+   </property>
+   <property name="text">
+    <string>Avid Caption Plugin</string>
+   </property>
+  </action>
+  <action name="actionEdit_Decision_List_EDL">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/Document Checklist.png</normaloff>:/icons/Document Checklist.png</iconset>
+   </property>
+   <property name="text">
+    <string>Edit Decision List (EDL)</string>
+   </property>
+  </action>
+  <action name="actionFusionner_un_fichier_de_Timecodes">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/Document Checklist.png</normaloff>:/icons/Document Checklist.png</iconset>
+   </property>
+   <property name="text">
+    <string>Fusionner un fichier de Timecodes...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+I</string>
+   </property>
+  </action>
+  <action name="actionSupprimer_les_clips">
+   <property name="icon">
+    <iconset resource="ressources.qrc">
+     <normaloff>:/icons/clap_remove.png</normaloff>:/icons/clap_remove.png</iconset>
+   </property>
+   <property name="text">
+    <string>Supprimer les clips...</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="ressources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AddClip</class>
+ <widget class="QDialog" name="AddClip">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>361</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Edition de clip</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="ressources.qrc">
+    <normaloff>:/icons/clap.png</normaloff>:/icons/clap.png</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="1" column="0">
+      <widget class="QRadioButton" name="startButton">
+       <property name="text">
+        <string>Placer au début</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QRadioButton" name="afterButton">
+       <property name="text">
+        <string>Placer après</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QComboBox" name="listeBox">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="frame">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>TC Out</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Durée</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Effet</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Commentaire</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Source TC In</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Source TC Out</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QSpinBox" name="hours">
+         <property name="statusTip">
+          <string>Permet de décaler tous les timecodes. Utilisez une valeur positive ou négative.</string>
+         </property>
+         <property name="frame">
+          <bool>false</bool>
+         </property>
+         <property name="suffix">
+          <string> h</string>
+         </property>
+         <property name="minimum">
+          <number>-99</number>
+         </property>
+         <property name="value">
+          <number>0</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="minutes">
+         <property name="statusTip">
+          <string>Permet de décaler tous les timecodes. Utilisez une valeur positive ou négative.</string>
+         </property>
+         <property name="frame">
+          <bool>false</bool>
+         </property>
+         <property name="suffix">
+          <string> mn</string>
+         </property>
+         <property name="minimum">
+          <number>-99</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="seconds">
+         <property name="statusTip">
+          <string>Permet de décaler tous les timecodes. Utilisez une valeur positive ou négative.</string>
+         </property>
+         <property name="frame">
+          <bool>false</bool>
+         </property>
+         <property name="suffix">
+          <string> s</string>
+         </property>
+         <property name="minimum">
+          <number>-99</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="frames">
+         <property name="statusTip">
+          <string>Permet de décaler tous les timecodes. Utilisez une valeur positive ou négative.</string>
+         </property>
+         <property name="frame">
+          <bool>false</bool>
+         </property>
+         <property name="suffix">
+          <string> f</string>
+         </property>
+         <property name="minimum">
+          <number>-99</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="7" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QSpinBox" name="hours_2">
+         <property name="statusTip">
+          <string>Permet de décaler tous les timecodes. Utilisez une valeur positive ou négative.</string>
+         </property>
+         <property name="frame">
+          <bool>false</bool>
+         </property>
+         <property name="suffix">
+          <string> h</string>
+         </property>
+         <property name="minimum">
+          <number>-99</number>
+         </property>
+         <property name="value">
+          <number>0</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="minutes_2">
+         <property name="statusTip">
+          <string>Permet de décaler tous les timecodes. Utilisez une valeur positive ou négative.</string>
+         </property>
+         <property name="frame">
+          <bool>false</bool>
+         </property>
+         <property name="suffix">
+          <string> mn</string>
+         </property>
+         <property name="minimum">
+          <number>-99</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="seconds_2">
+         <property name="statusTip">
+          <string>Permet de décaler tous les timecodes. Utilisez une valeur positive ou négative.</string>
+         </property>
+         <property name="frame">
+          <bool>false</bool>
+         </property>
+         <property name="suffix">
+          <string> s</string>
+         </property>
+         <property name="minimum">
+          <number>-99</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="frames_2">
+         <property name="statusTip">
+          <string>Permet de décaler tous les timecodes. Utilisez une valeur positive ou négative.</string>
+         </property>
+         <property name="frame">
+          <bool>false</bool>
+         </property>
+         <property name="suffix">
+          <string> f</string>
+         </property>
+         <property name="minimum">
+          <number>-99</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="10" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QSpinBox" name="hours_3">
+         <property name="statusTip">
+          <string>Permet de décaler tous les timecodes. Utilisez une valeur positive ou négative.</string>
+         </property>
+         <property name="frame">
+          <bool>false</bool>
+         </property>
+         <property name="suffix">
+          <string> h</string>
+         </property>
+         <property name="minimum">
+          <number>-99</number>
+         </property>
+         <property name="value">
+          <number>0</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="minutes_3">
+         <property name="statusTip">
+          <string>Permet de décaler tous les timecodes. Utilisez une valeur positive ou négative.</string>
+         </property>
+         <property name="frame">
+          <bool>false</bool>
+         </property>
+         <property name="suffix">
+          <string> mn</string>
+         </property>
+         <property name="minimum">
+          <number>-99</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="seconds_3">
+         <property name="statusTip">
+          <string>Permet de décaler tous les timecodes. Utilisez une valeur positive ou négative.</string>
+         </property>
+         <property name="frame">
+          <bool>false</bool>
+         </property>
+         <property name="suffix">
+          <string> s</string>
+         </property>
+         <property name="minimum">
+          <number>-99</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="frames_3">
+         <property name="statusTip">
+          <string>Permet de décaler tous les timecodes. Utilisez une valeur positive ou négative.</string>
+         </property>
+         <property name="frame">
+          <bool>false</bool>
+         </property>
+         <property name="suffix">
+          <string> f</string>
+         </property>
+         <property name="minimum">
+          <number>-99</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="11" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QSpinBox" name="hours_4">
+         <property name="statusTip">
+          <string>Permet de décaler tous les timecodes. Utilisez une valeur positive ou négative.</string>
+         </property>
+         <property name="frame">
+          <bool>false</bool>
+         </property>
+         <property name="suffix">
+          <string> h</string>
+         </property>
+         <property name="minimum">
+          <number>-99</number>
+         </property>
+         <property name="value">
+          <number>0</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="minutes_4">
+         <property name="statusTip">
+          <string>Permet de décaler tous les timecodes. Utilisez une valeur positive ou négative.</string>
+         </property>
+         <property name="frame">
+          <bool>false</bool>
+         </property>
+         <property name="suffix">
+          <string> mn</string>
+         </property>
+         <property name="minimum">
+          <number>-99</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="seconds_4">
+         <property name="statusTip">
+          <string>Permet de décaler tous les timecodes. Utilisez une valeur positive ou négative.</string>
+         </property>
+         <property name="frame">
+          <bool>false</bool>
+         </property>
+         <property name="suffix">
+          <string> s</string>
+         </property>
+         <property name="minimum">
+          <number>-99</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="frames_4">
+         <property name="statusTip">
+          <string>Permet de décaler tous les timecodes. Utilisez une valeur positive ou négative.</string>
+         </property>
+         <property name="frame">
+          <bool>false</bool>
+         </property>
+         <property name="suffix">
+          <string> f</string>
+         </property>
+         <property name="minimum">
+          <number>-99</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="8" column="1">
+      <widget class="QLineEdit" name="effectText">
+       <property name="frame">
+        <bool>false</bool>
+       </property>
+       <property name="placeholderText">
+        <string>Effets (DISSOLVE...)</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>Nom</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="nomText">
+       <property name="frame">
+        <bool>false</bool>
+       </property>
+       <property name="placeholderText">
+        <string>Nom du clip</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QRadioButton" name="endButton">
+       <property name="text">
+        <string>Placer à la fin</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Décaler</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QCheckBox" name="insertBox">
+       <property name="text">
+        <string>Décaler les clips à l'insertion</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>TC In</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLabel" name="tcinText">
+       <property name="text">
+        <string>00:00:00:00</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="QPlainTextEdit" name="comText">
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="placeholderText">
+        <string>Commentaires sur le clip</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="ressources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>AddClip</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>AddClip</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

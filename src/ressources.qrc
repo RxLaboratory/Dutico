@@ -1,0 +1,33 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>Document Checklist.png</file>
+        <file>File Add.png</file>
+        <file>folder_open.png</file>
+        <file>layers.png</file>
+        <file>layersadd.png</file>
+        <file>layersdisable.png</file>
+        <file>layersedit.png</file>
+        <file>layersremove.png</file>
+        <file>save.png</file>
+        <file>saveas.png</file>
+        <file>Stop.png</file>
+        <file>video.png</file>
+        <file>Arrow Left.png</file>
+        <file>Arrow Right.png</file>
+        <file>dialog_apply.png</file>
+        <file>savevideo.png</file>
+        <file>Arrow Up.png</file>
+        <file>Arrow Down.png</file>
+        <file>Pictures.png</file>
+        <file>video2.png</file>
+        <file>cog.png</file>
+        <file>search.png</file>
+        <file>info.png</file>
+        <file>clap.png</file>
+        <file>clap_add.png</file>
+        <file>clap_remove.png</file>
+        <file>logo_ombre_et_texte.png</file>
+        <file>tout_petit_logo.png</file>
+        <file>logo_dev.png</file>
+    </qresource>
+</RCC>
