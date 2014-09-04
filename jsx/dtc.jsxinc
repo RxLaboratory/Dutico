@@ -1,0 +1,685 @@
+/*
+dtc.jsxinc
+(c) 2014 Nicolas Dufresne
+http://www.duduf.net
+
+Provides some useful functions to create After Effects comps from Dutico files
+
+This file is part of Dutico.
+
+Dutico is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Dutico is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Dutico. If not, see <http://www.gnu.org/licenses/>.
+
+*/
+
+//converts string timecode "00:00:00:00" to int frames
+function tcToFrames(tc,fps)
+{
+	if (tc == "") return 0;
+	var timeCode = tc.split(":");
+	var f = parseInt(timeCode[0])*60*60*fps + parseInt(timeCode[1])*60*fps + parseInt(timeCode[2])*fps + parseInt(timeCode[3]);
+	return f;
+}
+
+//converts int frames to string timecode "00:00:00:00"
+function framesToTc(frames,fps)
+{
+	var h = frames/fps/60/60;
+	var m = frames/fps/60-(h*60);
+	var s = frames/fps-(m*60)-(h*60*60);
+	var i = frames-(s*fps)-(m*60*fps)-(h*60*60*fps);
+	var hS;
+	var mS;
+	var sS;
+	var iS;
+	if (h < 0) hS = "00";
+	else if (h<10) hS = "0" + h;
+	else hS = h;
+	if (m < 0) mS = "00";
+	else if (m<10) mS = "0" + m;
+	else mS = m;
+	if (s < 0) sS = "00";
+	else if (s<10) sS = "0" + s;
+	else sS = s;
+	if (i < 0) iS = "00";
+	else if (i<10) iS = "0" + i;
+	else iS = i;
+	var tc = hS + ":" + mS + ":" + sS + ":" + iS;
+	return tc;
+}
+
+//converts frames to seconds
+function framesToTime(frames,fps)
+{
+	return frames/fps;
+}
+
+//converts seconds to frames
+function timeToFrames(time,fps)
+{
+	return time*fps;
+}
+
+//converts string timecode "00:00:00:00" to seconds
+function tcToTime(tc,fps)
+{
+	return framesToTime(tcToFrames(tc,fps),fps);
+}
+
+//importe un layer et le place dans une comp
+function importLayer(dtcLayer,comp,duration,w,h,fps)
+{
+	//importer
+	var importFile = new File(dtcLayer.file);
+	var item;
+	if (dtcLayer.file.toLowerCase() == "placeholder") //créer un placeholder
+	{
+		item = app.project.importPlaceholder(dtcLayer.name + " " + dtcLayer.file, w, h, fps, duration)
+	}
+	else if (dtcLayer.file != "" && importFile.exists && dtcLayer.sequence) //séquence d'images
+	{
+		var io = new ImportOptions(new File(dtcLayer.file));
+		io.sequence = true;
+		item = app.project.importFile(io);
+	}
+	else if (dtcLayer.file != "" && importFile.exists) //fichier simple
+	{
+		item = app.project.importFile(new ImportOptions(new File(dtcLayer.file)));
+	}
+	else
+	{
+		return null;
+	}
+	//mettre dans la comp
+	var l = comp.layers.add(item);
+	//mettre aux dimensions
+	if (item.width != comp.width && item.height != comp.height)
+	{
+		if (item.width/item.height >= comp.width/comp.height)
+		{
+			var s = comp.width/item.width*100;
+			l.transform.scale.setValue([s,s,s]);
+		}
+		else
+		{
+			var s = comp.height/item.height*100;
+			l.transform.scale.setValue([s,s,s]);
+		}
+	}
+	return l;
+}
+
+//create comp from Dutico object
+function createDTCComp(dtc)
+{
+	//---------------------------
+	//vérifier qu'il y a des clips
+	//---------------------------
+	if (dtc.clips == undefined)
+	{
+		alert("This file is not a valid Dutico file");
+		return null;
+	}
+	
+	if (dtc.clips.length == 0)
+	{
+		alert("There are no clips to import in this file");
+		return null;
+	}
+	
+	//---------------------------
+	//charger les paramètres de compo
+	//---------------------------
+	//paramètres par défaut
+	var compName = "DuTico Composition";
+	var handles = 0;
+	var h = 1080;
+	var paramsFromClip = true;
+	var paramsFromLayer = "";
+	var p = 1;
+	var precompose = true;
+	var singleTextLayer = true;
+	var sequence = false;
+	var video = true;
+	var w = 1920;
+	var fps = 25;
+	var multiLayers = false;
+	var useLayerTC = "";
+	var bitcName = false;
+	var bitcShotsTC = false;
+	var bitcTC = false;
+	var sound = "";
+	var newAEP = true;
+	var saveAEP = false;
+	var saveFile = "";
+	//prendre les paramètres du DTC
+	if (dtc.aeParams != undefined)
+	{
+		if (dtc.aeParams.compName != undefined) compName = dtc.aeParams.compName;
+		if (dtc.aeParams.handles != undefined) handles = dtc.aeParams.handles;
+		if (dtc.aeParams.height != undefined) h = dtc.aeParams.height;
+		if (dtc.aeParams.paramsFromClip != undefined) paramsFromClip = dtc.aeParams.paramsFromClip;
+		if (dtc.aeParams.paramsFromLayer != undefined) paramsFromLayer = dtc.aeParams.paramsFromLayer;
+		if (dtc.aeParams.pix != undefined) p = dtc.aeParams.pix;
+		if (dtc.aeParams.precompose != undefined) precompose = dtc.aeParams.precompose;
+		if (dtc.aeParams.singleTextLayer != undefined) singleTextLayer = dtc.aeParams.singleTextLayer;
+		if (dtc.aeParams.sourceAsSequences != undefined) sequence = dtc.aeParams.sourceAsSequences;
+		if (dtc.aeParams.video != undefined) video = dtc.aeParams.video;
+		if (dtc.aeParams.width != undefined) w = dtc.aeParams.width;
+		if (dtc.aeParams.fps != undefined) fps = dtc.aeParams.fps;
+		if (dtc.aeParams.multilayers != undefined) multiLayers = dtc.aeParams.multilayers;
+		if (dtc.aeParams.useLayerTC != undefined) useLayerTC = dtc.aeParams.useLayerTC;
+		if (dtc.aeParams.bitcName != undefined) bitcName = dtc.aeParams.bitcName;
+		if (dtc.aeParams.bitcShotsTC != undefined) bitcShotsTC = dtc.aeParams.bitcShotsTC;
+		if (dtc.aeParams.bitcTC != undefined) bitcTC = dtc.aeParams.bitcTC;
+		if (dtc.aeParams.sound != undefined) sound = dtc.aeParams.sound;
+		if (dtc.aeParams.saveAEP != undefined) saveAEP = dtc.aeParams.saveAEP;
+		if (dtc.aeParams.newAEP != undefined) newAEP = dtc.aeParams.newAEP;
+		if (dtc.aeParams.saveFile != undefined) saveFile = dtc.aeParams.saveFile;
+	}
+	
+	//---------------------------
+	//fermer le projet
+	//---------------------------
+	if (newAEP) app.project.close(CloseOptions.PROMPT_TO_SAVE_CHANGES);
+	
+	//---------------------------
+	//sauvegarder le projet
+	//---------------------------
+	if (saveAEP) app.project.save(new File(saveFile + ".aep"));
+	
+	//---------------------------
+	//importer le premier clip non placeholder pour prendre sa résolution
+	//---------------------------
+	if (paramsFromClip.value)
+	{
+		var found = false;
+		//parcourir tous les clips
+		for (i = 0;i<dtc.clips.length;i++)
+		{
+			//si on prend les params depuis un layer
+			if (multiLayers && paramsFromLayer != "") 
+			{
+				//chercher le bon layer
+				for (j=0;j<dtc.clips[i].layers.length;j++)
+				{
+					//si layer trouvé
+					if (dtc.clips[i].layers[j].name == paramsFromLayer && dtc.clips[i].layers[j].file != "")
+					{
+						var importFile = new File(dtc.clips[i].layers[j].file);
+						if (importFile.exists)
+						{
+							var item = app.project.importFile(new ImportOptions(new File(dtc.clips[i].file)));
+							w = item.width;
+							h = item.height;
+							p = item.pixelAspect;
+							//virer l'item maintenant qu'on a les infos
+							item.remove();
+							found = true;
+							break;
+						}
+					}
+				}
+			}
+			//si on prend sur le clip directement
+			else if (dtc.clips[i].file.toLowerCase() != "placeholder" && dtc.clips[i].file.toLowerCase() != "") //si params depuis un clip
+			{
+				var importFile = new File(dtc.clips[i].file);
+				if (importFile.exists)
+				{
+					var item = app.project.importFile(new ImportOptions(new File(dtc.clips[i].file)));
+					w = item.width;
+					h = item.height;
+					p = item.pixelAspect;
+					//virer l'item maintenant qu'on a les infos
+					item.remove();
+					found = true;
+					break;
+				}
+			}
+		}
+	}
+	
+	//---------------------------
+	//chercher le plus petit et le plus grand TCIn et TCOut (pour la durée et le displaystarttime)
+	//---------------------------
+	var first = tcToFrames(dtc.clips[0].TCIn,fps);
+	var last = tcToFrames(dtc.clips[0].TCOut,fps);
+	for (i = 1;i<dtc.clips.length;i++)
+	{
+		var ti = tcToFrames(dtc.clips[i].TCIn,fps);
+		var to = tcToFrames(dtc.clips[i].TCOut,fps);
+		if (ti < first) first = ti;
+		if (to > last) last = to;
+	}
+	first = framesToTime(first,fps);
+	last = framesToTime(last,fps);
+	
+	//---------------------------
+	//créer la comp
+	//---------------------------
+	var d = last - first;
+	if (d == 0) d = 100;
+	var comp = app.project.items.addComp(compName,w,h,p,d,fps);
+	comp.displayStartTime = first;
+	
+	//---------------------------
+	//les pistes vidéos de base
+	//---------------------------
+	var videoLayers = [];
+	if (dtc.videos != undefined)
+	{
+		if (dtc.videos.length > 0)
+		{
+			//parcourir les vidéos à insérer
+			for (i = 0;i<dtc.videos.length;i++)
+			{
+				var vid = dtc.videos[i];
+				var importFile = new File(vid.file);
+				var item;
+				if (!importFile.exists || vid.file.toLowerCase() == "placeholder") //créer un placeholder
+				{
+					var d = tcToTime(clip.TCOut,fps) - tcToTime(clip.TCIn,fps);
+					item = app.project.importPlaceholder(clip.name + " " + clip.file, w, h, fps, d)
+				}
+				else
+				{
+					item = app.project.importFile(new ImportOptions(new File(vid.file)));
+				}
+				//si durée nulle, on ne le met pas
+				if (item.duration == 0) continue;
+				//mettre dans la comp
+				var videoL = comp.layers.add(item);
+				videoL.startTime = -first;
+				if (sound != vid.name) videoL.audioEnabled = false;
+				videoLayers.push(videoL);
+			}
+		}
+	}
+	//précomposer les videos de base
+	if (videoLayers.length > 0)
+	{
+		//les index
+		var indexes = [];
+		for (i = 0;i<videoLayers.length;i++)
+		{
+			indexes.push(videoLayers[i].index);
+		}
+		comp.layers.precompose(indexes,"Videos");
+		videoLayers = [];
+		videoLayers.push(comp.layer(1));
+	}
+	
+	//---------------------------
+	//préparer les textes
+	//---------------------------
+	var textLayer;
+	var textTCLayer;
+	var cadre;
+	var cadreTC;
+	//si noms des plans
+	if (bitcName)
+	{
+		//créer un cadre noir
+		cadre = comp.layers.addSolid([0,0,0],"black",200,50,1,comp.duration);
+		cadre.transform.anchorPoint.setValue([0,50]);
+		cadre.transform.position.setValue([0,comp.height]);
+		//si single, ajouter le calque
+		if (singleTextLayer)
+		{
+			textLayer = comp.layers.addText();
+			textLayer.transform.position.setValue([10,comp.height-10]);
+		}
+	}
+	//si TC
+	if (bitcTC)
+	{
+		//créer un cadre noir
+		cadreTC = comp.layers.addSolid([0,0,0],"black",220,50,1,comp.duration);
+		cadreTC.transform.anchorPoint.setValue([0,50]);
+		cadreTC.transform.position.setValue([comp.width-220,comp.height]);
+		textTCLayer = comp.layers.addText();
+		textTCLayer.transform.position.setValue([comp.width-210,comp.height-10]);
+		textTCLayer.sourceText.expression = "function framesToTc(frames)\n" + 
+		"{\n" + 
+		"var h = frames*thisComp.frameDuration/60/60;\n" + 
+		"h = parseInt(h);\n" + 
+		"var m = frames*thisComp.frameDuration/60-(h*60);\n" + 
+		"m = parseInt(m);\n" + 
+		"var s = frames*thisComp.frameDuration-(m*60)-(h*60*60);\n" + 
+		"s = parseInt(s);\n" + 
+		"var i = frames-(s/thisComp.frameDuration)-(m*60/thisComp.frameDuration)-(h*60*60/thisComp.frameDuration);\n" + 
+		"var hS;\n" + 
+		"var mS;\n" + 
+		"var sS;\n" + 
+		"var iS;\n" + 
+		"if (h < 0) hS = '00';\n" + 
+		"else if (h<10) hS = '0' + h;\n" + 
+		"else hS = h;\n" + 
+		"if (m < 0) mS = '00';\n" + 
+		"else if (m<10) mS = '0' + m;\n" + 
+		"else mS = m;\n" + 
+		"if (s < 0) sS = '00';\n" + 
+		"else if (s<10) sS = '0' + s;\n" + 
+		"else sS = s;\n" + 
+		"if (i < 0) iS = '00';\n" + 
+		"else if (i<10) iS = '0' + i;\n" + 
+		"else iS = i;\n" + 
+		"var tc = hS + ':' + mS + ':' + sS + ':' + iS;\n" + 
+		"return tc;\n" + 
+		"};\n" + 
+		"framesToTc(timeToFrames(time+thisComp.displayStartTime))";
+	}
+	
+	
+	//---------------------------
+	//créer les clips
+	//---------------------------
+	if (video)
+	{
+		//garder le TCOut du clip précédent
+		var prevTC = 0;
+		//pour chaque clip
+		for (i=0;i<dtc.clips.length;i++)
+		{
+			var clip = dtc.clips[i];
+			//calculer les TC
+			var TCIn =  tcToTime(clip.TCIn,fps)-first;
+			var TCOut =  tcToTime(clip.TCOut,fps)-first;
+			var sourceTCIn =  tcToTime(clip.sourceTCIn,fps);
+			//chercher le TCOut si on utilise pas l'EDL
+			if (useLayerTC != "")
+			{
+				TCIn = prevTC;
+				//chercher le TCOut
+				if (multiLayers)
+				{
+					for (j = 0;j<clip.layers.length;j++)
+					{
+						if (clip.layers[j].name == useLayerTC && clip.layers[j].file != "")
+						{
+							//import pour durée
+							var importFile = new File(clip.layers[j].file);
+							var item;
+							if (importFile.exists && clip.layers[j].sequence) //séquence d'images
+							{
+								var io = new ImportOptions(new File(clip.layers[j].file));
+								io.sequence = true;
+								item = app.project.importFile(io);
+							}
+							else if (importFile.exists) //fichier simple
+							{
+								item = app.project.importFile(new ImportOptions(new File(clip.layers[j].file)));
+							}
+							//calculer le TCOut avec l'item importé
+							if (item != undefined)
+							{
+								TCOut = TCIn + item.duration;
+							}
+							//et retirer l'item
+							item.remove;
+						}
+					}
+				}
+			}
+			var startTime = TCIn - sourceTCIn;
+			var inPoint = TCIn;
+			var outPoint = TCOut;
+			prevTC = TCOut;
+			
+			//si on dépasse la durée de la comp, on la rallonge, ainsi que les calques de texte
+			if (outPoint > comp.duration)
+			{
+				comp.duration = outPoint;
+				if(bitcName && singleTextLayer)
+				{
+					if (textLayer != undefined) textLayer.outPoint = outPoint;
+					if (cadre != undefined) cadre.outPoint = outPoint;
+				}
+				if (bitcTC)
+				{
+					if (textTCLayer != undefined) textTCLayer.outPoint = outPoint;
+					if (cadreTC != undefined) cadreTC.outPoint = outPoint;
+				}
+				if (bitcShotsTC && !precompose)
+				{
+					if (cadreShotsTC != undefined) cadreShotsTC.outPoint = outPoint;
+				}
+			}
+			
+			//mettre le texte
+			//single text
+			if (bitcName && singleTextLayer && textLayer != undefined)
+			{
+				textLayer.sourceText.setValueAtTime(inPoint,clip.name);
+				textLayer.sourceText.setValueAtTime(outPoint," ");
+			}
+			//multi texts
+			else if (bitcName)
+			{
+				var textL = comp.layers.addText(clip.name);
+				textL.transform.position.setValue([10,comp.height-10]);
+				textL.inPoint = inPoint;
+				textL.outPoint = outPoint;
+			}
+			
+			//couper la piste vidéos si le clip a pas la durée du timecode
+			if (useLayerTC != "" && videoLayers.length > 0 && TCOut != tcToTime(clip.TCOut,fps) - first)
+			{
+				var videosLayer = videoLayers[videoLayers.length-1];
+				var dupl = videosLayer.duplicate();
+				videosLayer.outPoint = outPoint;
+				dupl.startTime = outPoint - tcToTime(clip.TCOut,fps) + first ;
+				dupl.inPoint = outPoint;
+				videoLayers.push(dupl);
+			}
+			
+			//si on utilise des layers différents
+			if (multiLayers)
+			{
+				//pour chaque layer
+				var layersAdded = []; //liste des layers ajoutés
+				//ajouter les layers
+				for (j = 0;j<clip.layers.length;j++)
+				{
+					var layer = clip.layers[j];
+					var layerAdded = importLayer(layer,comp,TCOut-TCIn,w,h,fps);
+					if (layerAdded == null) continue;
+					//couper le son, sauf si c'est le son demandé
+					if (sound != layer.name) layerAdded.audioEnabled = false;
+					//si on ne précompose pas, on coupe tout de suite à la durée
+					if (!precompose)
+					{
+						//couper et placer
+						layerAdded.startTime = startTime;
+						layerAdded.inPoint = inPoint;
+						layerAdded.outPoint = outPoint;
+						//ajouter le texte ShotsTC
+						if (bitcShotsTC)
+						{
+							//créer un cadre noir
+							var cadreShotsTC = comp.layers.addSolid([0,0,0],"black",200,50,1,comp.duration);
+							cadreShotsTC.transform.anchorPoint.setValue([0,50]);
+							cadreShotsTC.transform.position.setValue([200,comp.height]);
+							var textL = comp.layers.addText();
+							textL.transform.position.setValue([210,comp.height-10]);
+							textL.sourceText.expression = "'f:' + timeToFrames(time+thisComp.displayStartTime-" + inPoint + ")+1";
+							layersAdded.push(cadreShotsTC);
+							layersAdded.push(textL);
+							textL.inPoint = inPoint;
+							textL.outPoint = outPoint;
+							cadreShotsTC.inPoint = inPoint;
+							cadreShotsTC.outPoint = outPoint;
+							textL.moveToEnd();
+							cadreShotsTC.moveToEnd();
+						}
+						layerAdded.moveToEnd();
+					}
+					//on ajoute à la liste des layers ajoutés
+					layersAdded.push(layerAdded);
+				}
+				//si precompo, precomposer
+				if (precompose && layersAdded.length > 0)
+				{
+					var indexes = [];
+					//récupérer les index
+					for (j = 0;j<layersAdded.length;j++)
+					{
+						indexes.push(layersAdded[j].index);
+					}
+					var precomp = comp.layers.precompose(indexes,clip.name);
+					//handles et marqueurs
+					//precomp.layer(1).marker.setValueAtTime(tcToTime(clip.TCIn,fps),"IN");
+					//precomp.layer(1).marker.setValueAtTime(tcToTime(clip.TCOut,fps),"OUT");
+					for (k = 1;k<=precomp.layers.length;k++)
+					{
+						precomp.layer(k).startTime = startTime;
+						precomp.layer(k).inPoint = inPoint-parseInt(handles)/fps;
+						precomp.layer(k).outPoint = outPoint+parseInt(handles)/fps;
+					}
+					comp.layer(1).inPoint = inPoint;
+					comp.layer(1).outPoint = outPoint;
+					comp.layer(1).moveToEnd();
+					//ajouter le texte ShotsTC
+					if (bitcShotsTC)
+					{
+						//créer un cadre noir
+						cadreShotsTC = precomp.layers.addSolid([0,0,0],"black",200,50,1,precomp.duration);
+						cadreShotsTC.transform.anchorPoint.setValue([0,50]);
+						cadreShotsTC.transform.position.setValue([200,comp.height]);
+						var textL = precomp.layers.addText();
+						textL.transform.position.setValue([210,comp.height-10]);
+						textL.sourceText.expression = "'f:' + timeToFrames(time+thisComp.displayStartTime-" + inPoint + ")+1";
+						layersAdded.push(cadreShotsTC);
+						layersAdded.push(textL);
+					}
+				}
+			}
+			//si on utilise des clips
+			else
+			{
+				//importer
+				var layer = importLayer(clip,comp,TCOut-TCIn,w,h,fps)
+				if (layer == null) continue;
+				//si precompo, precomposer
+				if (precompose)
+				{
+					var precomp = comp.layers.precompose([layer.index],layer.name);
+					//handles et marqueurs
+					//precomp.layer(1).marker.setValueAtTime(tcToTime(clip.TCIn,fps),"IN");
+					//precomp.layer(1).marker.setValueAtTime(tcToTime(clip.TCOut,fps),"OUT");
+					precomp.layer(1).startTime = startTime;
+					precomp.layer(1).inPoint = inPoint-parseInt(handles)/fps;
+					precomp.layer(1).outPoint = outPoint+parseInt(handles)/fps;
+					comp.layer(1).inPoint = inPoint;
+					comp.layer(1).outPoint = outPoint;
+					comp.layer(1).moveToEnd();
+					//ajouter le texte ShotsTC
+					if (bitcShotsTC)
+					{
+						//créer un cadre noir
+						cadreShotsTC = precomp.layers.addSolid([0,0,0],"black",200,50,1,precomp.duration);
+						cadreShotsTC.transform.anchorPoint.setValue([0,50]);
+						cadreShotsTC.transform.position.setValue([200,comp.height]);
+						var textL = precomp.layers.addText();
+						textL.transform.position.setValue([210,comp.height-10]);
+						textL.inPoint = inPoint;
+						textL.outPoint = outPoint;
+						textL.sourceText.expression = "'f:' + timeToFrames(time+thisComp.displayStartTime-" + inPoint + ")+1";
+						layersAdded.push(cadreShotsTC);
+						layersAdded.push(textL);
+					}
+				}
+				else
+				{
+					//couper et placer
+					layer.startTime = startTime;
+					layer.inPoint = inPoint;
+					layer.outPoint = outPoint;
+					//ajouter le texte ShotsTC
+					if (bitcShotsTC)
+					{
+						var cadreShotsTC = comp.layers.addSolid([0,0,0],"black",200,50,1,comp.duration);
+						cadreShotsTC.transform.anchorPoint.setValue([0,50]);
+						cadreShotsTC.transform.position.setValue([200,comp.height]);
+						var textL = comp.layers.addText();
+						textL.transform.position.setValue([210,comp.height-10]);
+						textL.sourceText.expression = "'f:' + timeToFrames(time+thisComp.displayStartTime-" + inPoint + ")+1";
+						layersAdded.push(cadreShotsTC);
+						layersAdded.push(textL);
+						textL.inPoint = inPoint;
+						textL.outPoint = outPoint;
+						cadreShotsTC.inPoint = inPoint;
+						cadreShotsTC.outPoint = outPoint;
+						textL.moveToEnd();
+						cadreShotsTC.moveToEnd();
+					}
+					layer.moveToEnd();
+				}
+			}
+		}
+	}
+	
+	//---------------------------
+	//mettre les videos au fond
+	//---------------------------
+	if (videoLayers.length > 0)
+	{
+		for (i = 0;i<videoLayers.length;i++)
+		{
+			videoLayers[i].moveToEnd();
+		}
+	}
+	
+	//---------------------------
+	//sauvegarder le projet
+	//---------------------------
+	if (saveAEP) app.project.save(new File(saveFile + ".aep"));
+	
+	//---------------------------
+	//retourner la compo créée
+	//---------------------------
+	return comp;
+}
+
+function importDTC(dtcF)
+{
+
+	//===================================
+	//========== GO! ====================
+	//===================================
+
+	//---------------------------
+	//ouvre le fichier, charge le JSON
+	//---------------------------
+	dtcF.open("r");
+	var dtcString = dtcF.read();
+	dtcF.close();
+	dtc = JSON.parse(dtcString);
+	delete dtcString;
+	var comp = createDTCComp(dtc);
+	//---------------------------
+	//lance le rendu
+	//---------------------------
+	if (dtc.aeParams.render != undefined)
+	{
+		if (dtc.aeParams.render)
+		{
+			app.project.renderQueue.items.add(comp);
+			var rqItem = app.project.renderQueue.item(1);
+			var om = rqItem.outputModule(1);
+			om.file = new File(dtc.aeParams.renderFile);
+			om.applyTemplate("dutico");
+			app.project.renderQueue.render();
+		}
+	}
+}
