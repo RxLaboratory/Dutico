@@ -79,6 +79,7 @@ function tcToTime(tc,fps)
 function importLayer(dtcLayer,comp)
 {
 	var item = importFootage(dtcLayer);
+	if (item == null) return null;
 	//mettre dans la comp
 	var l = comp.layers.add(item);
 	//mettre aux dimensions
@@ -263,12 +264,10 @@ function createDTCComp(dtc)
 		//---------------------------
 		for (i = 0;i<dtc.clips.length;i++)
 		{
-			//si pas de clip
-			if (dtc.clips[i].file.toLowerCase() == "placeholder" || dtc.clips[i].file.toLowerCase() == "") continue;
 
 			//importer les clips
-
 			var clip = dtc.clips[i];
+			
 			//calculer les TC
 			var sourceTCIn = tcToTime(clip.sourceTCIn,fps);
 			var sourceTCOut =  tcToTime(clip.sourceTCOut,fps);
@@ -298,18 +297,17 @@ function createDTCComp(dtc)
 				}
 			}
 			
+			
 			var startTime = -sourceTCIn;
-			var inPoint = TCIn;
+			var inPoint = 0;
 			var outPoint = TCOut;
-							
+
 			//Créer la comp
-			var comp = app.project.items.addComp(clip.name, w, h, p, TCOut-TCIn, fps);				
+			var comp = app.project.items.addComp(clip.name, w, h, p, TCOut, fps);	
 			
 			//si on utilise des layers différents
 			if (multiLayers)
 			{
-				//pour chaque layer
-				var layersAdded = []; //liste des layers ajoutés
 				//ajouter les layers
 				for (j = 0;j<clip.layers.length;j++)
 				{
@@ -327,19 +325,22 @@ function createDTCComp(dtc)
 						
 					//couper et placer
 					layerAdded.startTime = startTime;
-					layerAdded.inPoint = inPoint;
-					layerAdded.outPoint = outPoint;
-					
-					comp.duration = TCOut - TCIn;
+					//layerAdded.inPoint = inPoint;
+					//slayerAdded.outPoint = outPoint;
 
-					//on ajoute à la liste des layers ajoutés
-					layersAdded.push(layerAdded);
 				}
 
 			}
 			//si on utilise des clips
 			else
 			{
+				
+				//si pas de clip
+				if (dtc.clips[i].file.toLowerCase() == "placeholder" || dtc.clips[i].file.toLowerCase() == "")
+				{
+					app.project.close(CloseOptions.DO_NOT_SAVE_CHANGES);
+					continue;
+				}
 				//importer
 				var layer = clip;
 				//Importer
@@ -357,12 +358,10 @@ function createDTCComp(dtc)
 				layer.startTime = startTime;
 				layer.inPoint = inPoint;
 				layer.outPoint = outPoint;
-		
-				comp.duration = TCOut - TCIn;
 			}
 		
 			//enregistrer et fermer le projet
-			app.project.save(new File(saveFile.substring(saveFile.lastIndexOf("/")+1) + clip.name + ".aep"));
+			app.project.save(new File(saveFile.substring(0,saveFile.lastIndexOf("/")+1) + clip.name + ".aep"));
 			app.project.close(CloseOptions.DO_NOT_SAVE_CHANGES);
 		
 		}
