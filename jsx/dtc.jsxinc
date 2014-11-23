@@ -126,6 +126,19 @@ function importFootage(dtcLayer)
 	return item;
 }
 
+//enregistre le projet en vérifiant d'abord si il existe
+function saveCheck(aepName)
+{
+	var aepFile = new File(aepName + ".aep");
+	var inc = 0;
+	while(aepFile.exists)
+	{
+		inc++;
+		aepFile = new File(aepName + "_" + inc + ".aep");
+	}
+	app.project.save(aepFile);
+}
+
 //create comp from Dutico object
 function createDTCComp(dtc)
 {
@@ -360,7 +373,7 @@ function createDTCComp(dtc)
 			}
 		
 			//enregistrer et fermer le projet
-			app.project.save(new File(saveFile.substring(0,saveFile.lastIndexOf("/")+1) + clip.name + ".aep"));
+			saveCheck(saveFile.substring(0,saveFile.lastIndexOf("/")+1) + clip.name);
 			app.project.close(CloseOptions.DO_NOT_SAVE_CHANGES);
 		
 		}
@@ -371,11 +384,6 @@ function createDTCComp(dtc)
 	//---------------------------
 	else
 	{
-		
-		//---------------------------
-		//sauvegarder le projet
-		//---------------------------
-		if (saveAEP) app.project.save(new File(saveFile + ".aep"));
 		
 		//---------------------------
 		//chercher le plus petit et le plus grand TCIn et TCOut (pour la durée et le displaystarttime)
@@ -771,7 +779,7 @@ function createDTCComp(dtc)
 		//---------------------------
 		//sauvegarder le projet
 		//---------------------------
-		if (saveAEP) app.project.save(new File(saveFile + ".aep"));
+		if (saveAEP) saveCheck(saveFile);
 		
 		//---------------------------
 		//retourner la compo créée
