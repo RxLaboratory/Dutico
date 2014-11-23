@@ -30,7 +30,7 @@
         </property>
         <property name="icon">
          <iconset resource="ressources.qrc">
-          <normaloff>:/icons/video.png</normaloff>:/icons/video.png</iconset>
+          <normaloff>:/icons/media</normaloff>:/icons/media</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -50,7 +50,7 @@
         </property>
         <property name="icon">
          <iconset resource="ressources.qrc">
-          <normaloff>:/icons/video2.png</normaloff>:/icons/video2.png</iconset>
+          <normaloff>:/icons/media_shots</normaloff>:/icons/media_shots</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -67,7 +67,7 @@
         </property>
         <property name="icon">
          <iconset resource="ressources.qrc">
-          <normaloff>:/icons/Pictures.png</normaloff>:/icons/Pictures.png</iconset>
+          <normaloff>:/icons/media_picture</normaloff>:/icons/media_picture</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -122,7 +122,7 @@
        </property>
        <property name="icon">
         <iconset resource="ressources.qrc">
-         <normaloff>:/icons/folder_open.png</normaloff>:/icons/folder_open.png</iconset>
+         <normaloff>:/icons/folder_open</normaloff>:/icons/folder_open</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -251,6 +251,10 @@
            <property name="text">
             <string>Séquences d'images</string>
            </property>
+           <property name="icon">
+            <iconset resource="ressources.qrc">
+             <normaloff>:/icons/media_picture</normaloff>:/icons/media_picture</iconset>
+           </property>
            <property name="checked">
             <bool>true</bool>
            </property>
@@ -260,6 +264,10 @@
           <widget class="QRadioButton" name="videoButton">
            <property name="text">
             <string>Fichiers Vidéos</string>
+           </property>
+           <property name="icon">
+            <iconset resource="ressources.qrc">
+             <normaloff>:/icons/media</normaloff>:/icons/media</iconset>
            </property>
           </widget>
          </item>

@@ -65,6 +65,7 @@ private slots:
     void on_removeClipButton_clicked();
     void on_newAEPBox_toggled(bool checked);
     void on_applyOffsetSButton_clicked();
+    void on_shotAEPBox_toggled(bool checked);
 
 private:
     int findType(QFichier *testFile); //trouve à quel type de timecode on a affaire

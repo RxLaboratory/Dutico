@@ -867,9 +867,9 @@ void MainWindow::exportToAE()
     aeParams.insert("singleTextLayer",true);
     aeParams.insert("fps",fps->value());
     aeParams.insert("multilayers",true);
-    if (soundBox->currentIndex() != 0) aeParams.insert("paramsFromLayer",resolutionBox->currentText());
+    if (resolutionBox->currentIndex() != 0) aeParams.insert("paramsFromLayer",resolutionBox->currentText());
     else aeParams.insert("paramsFromLayer","");
-    if (soundBox->currentIndex() != 0) aeParams.insert("useLayerTC",durationBox->currentText());
+    if (durationBox->currentIndex() != 0) aeParams.insert("useLayerTC",durationBox->currentText());
     else aeParams.insert("useLayerTC","");
     if (soundBox->currentIndex() != 0) aeParams.insert("sound",soundBox->currentText());
     else aeParams.insert("sound","");
@@ -877,10 +877,12 @@ void MainWindow::exportToAE()
     aeParams.insert("bitcShotsTC",bitcShotsTCBox->isChecked());
     aeParams.insert("bitcTC",bitcTCBox->isChecked());
     QString renderDir = exportNameEdit->text();
-    if (!renderDir.endsWith("/") || !renderDir.endsWith("\\")) renderDir += "/";
+    renderDir = renderDir.replace("\\","/");
+    if (!renderDir.endsWith("/")) renderDir += "/";
     aeParams.insert("renderFile",renderDir + exportNameEdit_2->text());
     aeParams.insert("render",renderBox->isChecked());
     aeParams.insert("newAEP",newAEPBox->isChecked());
+    aeParams.insert("shotAEP",shotAEPBox->isChecked());
     aeParams.insert("saveAEP",saveAEPBox->isChecked());
     aeParams.insert("saveFile",renderDir + exportNameEdit_2->text());
 
@@ -1738,4 +1740,18 @@ void MainWindow::on_newAEPBox_toggled(bool checked)
     saveAEPBox->setEnabled(checked);
 }
 
+void MainWindow::on_shotAEPBox_toggled(bool checked)
+{
+    bitcFrame->setEnabled(!checked);
+    precomposeButton->setEnabled(!checked);
+    renderBox->setEnabled(!checked);
+    if (checked)
+    {
+        precomposeButton->setChecked(false);
+        bitcNameBox->setChecked(false);
+        bitcShotsTCBox->setChecked(false);
+        bitcTCBox->setChecked(false);
+        renderBox->setChecked(false);
+    }
+}
 

@@ -1,33 +1,38 @@
 <RCC>
     <qresource prefix="/icons">
-        <file>Document Checklist.png</file>
-        <file>File Add.png</file>
-        <file>folder_open.png</file>
-        <file>layers.png</file>
-        <file>layersadd.png</file>
-        <file>layersdisable.png</file>
-        <file>layersedit.png</file>
-        <file>layersremove.png</file>
-        <file>save.png</file>
-        <file>saveas.png</file>
-        <file>Stop.png</file>
-        <file>video.png</file>
-        <file>Arrow Left.png</file>
-        <file>Arrow Right.png</file>
-        <file>dialog_apply.png</file>
-        <file>savevideo.png</file>
-        <file>Arrow Up.png</file>
-        <file>Arrow Down.png</file>
-        <file>Pictures.png</file>
-        <file>video2.png</file>
-        <file>cog.png</file>
-        <file>search.png</file>
-        <file>info.png</file>
-        <file>clap.png</file>
-        <file>clap_add.png</file>
-        <file>clap_remove.png</file>
-        <file>logo_ombre_et_texte.png</file>
-        <file>tout_petit_logo.png</file>
-        <file>logo_dev.png</file>
+        <file alias="afx">Icons/after_effects.png</file>
+        <file alias="arrow_down">Icons/arrow_down.png</file>
+        <file alias="arrow_left">Icons/arrow_left.png</file>
+        <file alias="arrow_right">Icons/arrow_right.png</file>
+        <file alias="arrow_up">Icons/arrow_up.png</file>
+        <file alias="avid">Icons/avid.png</file>
+        <file alias="dutico">Icons/dutico.png</file>
+        <file alias="file_add">Icons/file_add.png</file>
+        <file alias="file_media">Icons/file_media.png</file>
+        <file alias="fodler_media">Icons/folder_media.png</file>
+        <file alias="layer_add">Icons/layer_add.png</file>
+        <file alias="layer_disable">Icons/layer_disable.png</file>
+        <file alias="layer_edit">Icons/layer_edit.png</file>
+        <file alias="layer_remove">Icons/layer_remove.png</file>
+        <file alias="layers">Icons/layers.png</file>
+        <file alias="list">Icons/list.png</file>
+        <file alias="list_add">Icons/list_add.png</file>
+        <file alias="media">Icons/media.png</file>
+        <file alias="media_remove">Icons/media_remove.png</file>
+        <file alias="quicktime">Icons/quicktime.png</file>
+        <file alias="save">Icons/save.png</file>
+        <file alias="save_as">Icons/save_as.png</file>
+        <file alias="quit">Icons/quit.png</file>
+        <file alias="folder_open">Icons/folder_open.png</file>
+        <file alias="file">Icons/file.png</file>
+        <file alias="duduf">Icons/duduf.png</file>
+        <file alias="params">Icons/params.png</file>
+        <file alias="apply">Icons/apply.png</file>
+        <file alias="search">Icons/search.png</file>
+        <file alias="media_shots">Icons/media_shots.png</file>
+        <file alias="media_picture">Icons/picture.png</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file alias="logo">Icons/petit_logo.png</file>
     </qresource>
 </RCC>

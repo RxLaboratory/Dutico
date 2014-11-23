@@ -11,11 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dutico 0.3</string>
+   <string>Dutico 0.4</string>
   </property>
   <property name="windowIcon">
    <iconset resource="ressources.qrc">
-    <normaloff>:/icons/logo_dev.png</normaloff>:/icons/logo_dev.png</iconset>
+    <normaloff>:/icons/dutico</normaloff>:/icons/dutico</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -36,6 +36,9 @@
     </property>
     <item>
      <widget class="QTabWidget" name="tabs">
+      <property name="tabPosition">
+       <enum>QTabWidget::South</enum>
+      </property>
       <property name="currentIndex">
        <number>0</number>
       </property>
@@ -45,7 +48,7 @@
       <widget class="QWidget" name="edlTab">
        <attribute name="icon">
         <iconset resource="ressources.qrc">
-         <normaloff>:/icons/Document Checklist.png</normaloff>:/icons/Document Checklist.png</iconset>
+         <normaloff>:/icons/list</normaloff>:/icons/list</iconset>
        </attribute>
        <attribute name="title">
         <string>Time codes</string>
@@ -73,6 +76,19 @@
             <number>0</number>
            </property>
            <item>
+            <spacer name="horizontalSpacer_24">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
             <widget class="QToolButton" name="browseButton">
              <property name="toolTip">
               <string>Importer un fichier de timecodes</string>
@@ -85,7 +101,7 @@
              </property>
              <property name="icon">
               <iconset resource="ressources.qrc">
-               <normaloff>:/icons/Document Checklist.png</normaloff>:/icons/Document Checklist.png</iconset>
+               <normaloff>:/icons/list</normaloff>:/icons/list</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -114,7 +130,7 @@
              </property>
              <property name="icon">
               <iconset resource="ressources.qrc">
-               <normaloff>:/icons/Document Checklist.png</normaloff>:/icons/Document Checklist.png</iconset>
+               <normaloff>:/icons/list_add</normaloff>:/icons/list_add</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -143,7 +159,7 @@
              </property>
              <property name="icon">
               <iconset resource="ressources.qrc">
-               <normaloff>:/icons/clap_remove.png</normaloff>:/icons/clap_remove.png</iconset>
+               <normaloff>:/icons/media_remove</normaloff>:/icons/media_remove</iconset>
              </property>
              <property name="iconSize">
               <size>
@@ -285,6 +301,32 @@
              </property>
             </spacer>
            </item>
+           <item>
+            <widget class="QToolButton" name="edlNextButton">
+             <property name="statusTip">
+              <string>Accédez à la préparation des médias.</string>
+             </property>
+             <property name="text">
+              <string>Suivant</string>
+             </property>
+             <property name="icon">
+              <iconset resource="ressources.qrc">
+               <normaloff>:/icons/arrow_right</normaloff>:/icons/arrow_right</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>32</width>
+               <height>32</height>
+              </size>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextBesideIcon</enum>
+             </property>
+             <property name="autoRaise">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
           </layout>
          </widget>
         </item>
@@ -377,7 +419,7 @@
               <property name="documentMode">
                <bool>true</bool>
               </property>
-              <widget class="QWidget" name="offsetGroup_3Page1" native="true">
+              <widget class="QWidget" name="offsetGroup_3Page1">
                <attribute name="title">
                 <string>Offset Montage</string>
                </attribute>
@@ -410,7 +452,7 @@
                   </property>
                   <property name="icon">
                    <iconset resource="ressources.qrc">
-                    <normaloff>:/icons/search.png</normaloff>:/icons/search.png</iconset>
+                    <normaloff>:/icons/search</normaloff>:/icons/search</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -503,7 +545,7 @@
                   </property>
                   <property name="icon">
                    <iconset resource="ressources.qrc">
-                    <normaloff>:/icons/dialog_apply.png</normaloff>:/icons/dialog_apply.png</iconset>
+                    <normaloff>:/icons/apply</normaloff>:/icons/apply</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -603,7 +645,7 @@
                   </property>
                   <property name="icon">
                    <iconset resource="ressources.qrc">
-                    <normaloff>:/icons/dialog_apply.png</normaloff>:/icons/dialog_apply.png</iconset>
+                    <normaloff>:/icons/apply</normaloff>:/icons/apply</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -725,32 +767,6 @@
             </property>
            </spacer>
           </item>
-          <item>
-           <widget class="QToolButton" name="edlNextButton">
-            <property name="statusTip">
-             <string>Accédez à la préparation des médias.</string>
-            </property>
-            <property name="text">
-             <string>Suivant</string>
-            </property>
-            <property name="icon">
-             <iconset resource="ressources.qrc">
-              <normaloff>:/icons/Arrow Right.png</normaloff>:/icons/Arrow Right.png</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>32</width>
-              <height>32</height>
-             </size>
-            </property>
-            <property name="toolButtonStyle">
-             <enum>Qt::ToolButtonTextUnderIcon</enum>
-            </property>
-            <property name="autoRaise">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
          </layout>
         </item>
        </layout>
@@ -758,7 +774,7 @@
       <widget class="QWidget" name="layersTab">
        <attribute name="icon">
         <iconset resource="ressources.qrc">
-         <normaloff>:/icons/video2.png</normaloff>:/icons/video2.png</iconset>
+         <normaloff>:/icons/media</normaloff>:/icons/media</iconset>
        </attribute>
        <attribute name="title">
         <string>Medias</string>
@@ -794,6 +810,48 @@
            <number>0</number>
           </property>
           <item>
+           <widget class="QToolButton" name="previousLayersButton">
+            <property name="toolTip">
+             <string>Retour</string>
+            </property>
+            <property name="statusTip">
+             <string>Retour à la gestion des timecodes.</string>
+            </property>
+            <property name="text">
+             <string>Précédent</string>
+            </property>
+            <property name="icon">
+             <iconset resource="ressources.qrc">
+              <normaloff>:/icons/arrow_left</normaloff>:/icons/arrow_left</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_12">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <widget class="QToolButton" name="addLayerButton">
             <property name="toolTip">
              <string>Ajouter une couche</string>
@@ -806,7 +864,7 @@
             </property>
             <property name="icon">
              <iconset resource="ressources.qrc">
-              <normaloff>:/icons/layersadd.png</normaloff>:/icons/layersadd.png</iconset>
+              <normaloff>:/icons/layer_add</normaloff>:/icons/layer_add</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -838,7 +896,7 @@
             </property>
             <property name="icon">
              <iconset resource="ressources.qrc">
-              <normaloff>:/icons/Arrow Up.png</normaloff>:/icons/Arrow Up.png</iconset>
+              <normaloff>:/icons/arrow_up</normaloff>:/icons/arrow_up</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -870,7 +928,7 @@
             </property>
             <property name="icon">
              <iconset resource="ressources.qrc">
-              <normaloff>:/icons/Arrow Down.png</normaloff>:/icons/Arrow Down.png</iconset>
+              <normaloff>:/icons/arrow_down</normaloff>:/icons/arrow_down</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -902,7 +960,7 @@
             </property>
             <property name="icon">
              <iconset resource="ressources.qrc">
-              <normaloff>:/icons/layersedit.png</normaloff>:/icons/layersedit.png</iconset>
+              <normaloff>:/icons/layer_edit</normaloff>:/icons/layer_edit</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -934,7 +992,7 @@
             </property>
             <property name="icon">
              <iconset resource="ressources.qrc">
-              <normaloff>:/icons/layersdisable.png</normaloff>:/icons/layersdisable.png</iconset>
+              <normaloff>:/icons/layer_disable</normaloff>:/icons/layer_disable</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -966,7 +1024,7 @@
             </property>
             <property name="icon">
              <iconset resource="ressources.qrc">
-              <normaloff>:/icons/layersremove.png</normaloff>:/icons/layersremove.png</iconset>
+              <normaloff>:/icons/layer_remove</normaloff>:/icons/layer_remove</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -994,6 +1052,35 @@
              </size>
             </property>
            </spacer>
+          </item>
+          <item>
+           <widget class="QToolButton" name="nextLayersButton">
+            <property name="toolTip">
+             <string>Suite</string>
+            </property>
+            <property name="statusTip">
+             <string>Accéder aux exports.</string>
+            </property>
+            <property name="text">
+             <string>Suivant</string>
+            </property>
+            <property name="icon">
+             <iconset resource="ressources.qrc">
+              <normaloff>:/icons/arrow_right</normaloff>:/icons/arrow_right</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>
@@ -1063,34 +1150,30 @@
           </column>
          </widget>
         </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="exportTab">
+       <attribute name="icon">
+        <iconset resource="ressources.qrc">
+         <normaloff>:/icons/file_media</normaloff>:/icons/file_media</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Export</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_8">
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <property name="leftMargin">
-           <number>3</number>
-          </property>
-          <property name="topMargin">
-           <number>3</number>
-          </property>
-          <property name="rightMargin">
-           <number>3</number>
-          </property>
-          <property name="bottomMargin">
-           <number>3</number>
-          </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_9">
           <item>
-           <widget class="QToolButton" name="previousLayersButton">
-            <property name="toolTip">
-             <string>Retour</string>
-            </property>
+           <widget class="QToolButton" name="previousExportButton">
             <property name="statusTip">
-             <string>Retour à la gestion des timecodes.</string>
+             <string>Revenir à la gestion des medias.</string>
             </property>
             <property name="text">
              <string>Précédent</string>
             </property>
             <property name="icon">
              <iconset resource="ressources.qrc">
-              <normaloff>:/icons/Arrow Left.png</normaloff>:/icons/Arrow Left.png</iconset>
+              <normaloff>:/icons/arrow_left</normaloff>:/icons/arrow_left</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -1099,7 +1182,7 @@
              </size>
             </property>
             <property name="toolButtonStyle">
-             <enum>Qt::ToolButtonTextUnderIcon</enum>
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
             </property>
             <property name="autoRaise">
              <bool>true</bool>
@@ -1107,7 +1190,7 @@
            </widget>
           </item>
           <item>
-           <spacer name="horizontalSpacer_2">
+           <spacer name="horizontalSpacer_11">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -1120,51 +1203,7 @@
            </spacer>
           </item>
           <item>
-           <widget class="QToolButton" name="nextLayersButton">
-            <property name="toolTip">
-             <string>Suite</string>
-            </property>
-            <property name="statusTip">
-             <string>Accéder aux exports.</string>
-            </property>
-            <property name="text">
-             <string>Suivant</string>
-            </property>
-            <property name="icon">
-             <iconset resource="ressources.qrc">
-              <normaloff>:/icons/Arrow Right.png</normaloff>:/icons/Arrow Right.png</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>32</width>
-              <height>32</height>
-             </size>
-            </property>
-            <property name="toolButtonStyle">
-             <enum>Qt::ToolButtonTextUnderIcon</enum>
-            </property>
-            <property name="autoRaise">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="exportTab">
-       <attribute name="icon">
-        <iconset resource="ressources.qrc">
-         <normaloff>:/icons/video.png</normaloff>:/icons/video.png</iconset>
-       </attribute>
-       <attribute name="title">
-        <string>Export</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_8">
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_9">
-          <item>
-           <widget class="QToolButton" name="aeButton">
+           <widget class="QCheckBox" name="aeButton">
             <property name="statusTip">
              <string>Active les exports vers After Effects.</string>
             </property>
@@ -1173,7 +1212,7 @@
             </property>
             <property name="icon">
              <iconset resource="ressources.qrc">
-              <normaloff>:/icons/video.png</normaloff>:/icons/video.png</iconset>
+              <normaloff>:/icons/afx</normaloff>:/icons/afx</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -1184,16 +1223,10 @@
             <property name="checkable">
              <bool>true</bool>
             </property>
-            <property name="toolButtonStyle">
-             <enum>Qt::ToolButtonTextBesideIcon</enum>
-            </property>
-            <property name="autoRaise">
-             <bool>true</bool>
-            </property>
            </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="qtButton">
+           <widget class="QCheckBox" name="qtButton">
             <property name="statusTip">
              <string>Active les exports en Quicktime text.</string>
             </property>
@@ -1202,7 +1235,7 @@
             </property>
             <property name="icon">
              <iconset resource="ressources.qrc">
-              <normaloff>:/icons/Document Checklist.png</normaloff>:/icons/Document Checklist.png</iconset>
+              <normaloff>:/icons/quicktime</normaloff>:/icons/quicktime</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -1213,16 +1246,10 @@
             <property name="checkable">
              <bool>true</bool>
             </property>
-            <property name="toolButtonStyle">
-             <enum>Qt::ToolButtonTextBesideIcon</enum>
-            </property>
-            <property name="autoRaise">
-             <bool>true</bool>
-            </property>
            </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="acpButton">
+           <widget class="QCheckBox" name="acpButton">
             <property name="statusTip">
              <string>Active les exports en Avid Caption Plugin.</string>
             </property>
@@ -1231,7 +1258,7 @@
             </property>
             <property name="icon">
              <iconset resource="ressources.qrc">
-              <normaloff>:/icons/Document Checklist.png</normaloff>:/icons/Document Checklist.png</iconset>
+              <normaloff>:/icons/avid</normaloff>:/icons/avid</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -1242,16 +1269,10 @@
             <property name="checkable">
              <bool>true</bool>
             </property>
-            <property name="toolButtonStyle">
-             <enum>Qt::ToolButtonTextBesideIcon</enum>
-            </property>
-            <property name="autoRaise">
-             <bool>true</bool>
-            </property>
            </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="edlButton">
+           <widget class="QCheckBox" name="edlButton">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -1263,7 +1284,7 @@
             </property>
             <property name="icon">
              <iconset resource="ressources.qrc">
-              <normaloff>:/icons/Document Checklist.png</normaloff>:/icons/Document Checklist.png</iconset>
+              <normaloff>:/icons/list</normaloff>:/icons/list</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -1272,12 +1293,6 @@
              </size>
             </property>
             <property name="checkable">
-             <bool>true</bool>
-            </property>
-            <property name="toolButtonStyle">
-             <enum>Qt::ToolButtonTextBesideIcon</enum>
-            </property>
-            <property name="autoRaise">
              <bool>true</bool>
             </property>
            </widget>
@@ -1294,6 +1309,116 @@
              </size>
             </property>
            </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_7">
+          <property name="leftMargin">
+           <number>3</number>
+          </property>
+          <property name="topMargin">
+           <number>3</number>
+          </property>
+          <property name="rightMargin">
+           <number>3</number>
+          </property>
+          <property name="bottomMargin">
+           <number>3</number>
+          </property>
+          <item>
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QToolButton" name="exportBrowseButton">
+            <property name="statusTip">
+             <string>Choisir le dossier de destination des exports.</string>
+            </property>
+            <property name="text">
+             <string>Parcourir...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="ressources.qrc">
+              <normaloff>:/icons/fodler_media</normaloff>:/icons/fodler_media</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="exportNameEdit">
+            <property name="statusTip">
+             <string>Dossier de destination des exports.</string>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="placeholderText">
+             <string>Chemin d'exportation</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="exportNameEdit_2">
+            <property name="statusTip">
+             <string>Nom des exports.</string>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="placeholderText">
+             <string>Nom des exports</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="exportButton">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="statusTip">
+             <string>Lancer l'exportation.</string>
+            </property>
+            <property name="text">
+             <string>Exporter</string>
+            </property>
+            <property name="icon">
+             <iconset resource="ressources.qrc">
+              <normaloff>:/icons/file_media</normaloff>:/icons/file_media</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolButtonStyle">
+             <enum>Qt::ToolButtonTextUnderIcon</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>
@@ -1317,7 +1442,7 @@
            </property>
            <attribute name="icon">
             <iconset resource="ressources.qrc">
-             <normaloff>:/icons/video.png</normaloff>:/icons/video.png</iconset>
+             <normaloff>:/icons/afx</normaloff>:/icons/afx</iconset>
            </attribute>
            <attribute name="title">
             <string>After Effects</string>
@@ -1326,6 +1451,9 @@
             <item>
              <widget class="QWidget" name="exportAEWidget" native="true">
               <layout class="QFormLayout" name="formLayout_3">
+               <property name="fieldGrowthPolicy">
+                <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+               </property>
                <item row="0" column="0">
                 <widget class="QLabel" name="label_2">
                  <property name="sizePolicy">
@@ -1400,35 +1528,6 @@
                  </item>
                 </widget>
                </item>
-               <item row="2" column="0">
-                <widget class="QLabel" name="label_9">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="statusTip">
-                  <string>Vous pouvez précomposer automatiquement les différents calques composant les clips (medias et timecodes)</string>
-                 </property>
-                 <property name="text">
-                  <string>Précomposer</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="1">
-                <widget class="QCheckBox" name="precomposeButton">
-                 <property name="statusTip">
-                  <string>Vous pouvez précomposer automatiquement les différents calques composant les clips (medias et timecodes)</string>
-                 </property>
-                 <property name="text">
-                  <string>Chaque plan</string>
-                 </property>
-                 <property name="checked">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
                <item row="3" column="0">
                 <widget class="QLabel" name="label_6">
                  <property name="sizePolicy">
@@ -1446,7 +1545,7 @@
                 </widget>
                </item>
                <item row="3" column="1">
-                <widget class="QFrame" name="frame_2">
+                <widget class="QFrame" name="resolutionFrame">
                  <property name="frameShape">
                   <enum>QFrame::Panel</enum>
                  </property>
@@ -1578,7 +1677,7 @@
                  </layout>
                 </widget>
                </item>
-               <item row="4" column="0">
+               <item row="5" column="0">
                 <widget class="QLabel" name="label_7">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
@@ -1594,8 +1693,8 @@
                  </property>
                 </widget>
                </item>
-               <item row="4" column="1">
-                <widget class="QFrame" name="frame">
+               <item row="5" column="1">
+                <widget class="QFrame" name="bitcFrame">
                  <property name="frameShape">
                   <enum>QFrame::Panel</enum>
                  </property>
@@ -1654,7 +1753,7 @@
                  </layout>
                 </widget>
                </item>
-               <item row="5" column="0">
+               <item row="6" column="0">
                 <widget class="QLabel" name="label_10">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
@@ -1667,36 +1766,7 @@
                  </property>
                 </widget>
                </item>
-               <item row="6" column="0">
-                <widget class="QLabel" name="label_8">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="statusTip">
-                  <string>Vous pouvez lancer automatiquement le rendu dès que la composition est crée. Le rendu utilisera le paramètre prédéfini nommé &quot;dutico&quot; si il existe.</string>
-                 </property>
-                 <property name="text">
-                  <string>Rendu</string>
-                 </property>
-                </widget>
-               </item>
                <item row="6" column="1">
-                <widget class="QCheckBox" name="renderBox">
-                 <property name="statusTip">
-                  <string>Vous pouvez lancer automatiquement le rendu dès que la composition est crée. Le rendu utilisera le paramètre prédéfini nommé &quot;dutico&quot; si il existe.</string>
-                 </property>
-                 <property name="text">
-                  <string>Lancer le rendu immédiatement</string>
-                 </property>
-                 <property name="checked">
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item row="5" column="1">
                 <widget class="QFrame" name="frame">
                  <property name="frameShape">
                   <enum>QFrame::Panel</enum>
@@ -1767,7 +1837,75 @@
                     </item>
                    </layout>
                   </item>
+                  <item>
+                   <widget class="QRadioButton" name="shotAEPBox">
+                    <property name="statusTip">
+                     <string>Crée un projet AEP pour chaque plan.</string>
+                    </property>
+                    <property name="text">
+                     <string>Un projet par plan</string>
+                    </property>
+                   </widget>
+                  </item>
                  </layout>
+                </widget>
+               </item>
+               <item row="7" column="0">
+                <widget class="QLabel" name="label_8">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="statusTip">
+                  <string>Vous pouvez lancer automatiquement le rendu dès que la composition est crée. Le rendu utilisera le paramètre prédéfini nommé &quot;dutico&quot; si il existe.</string>
+                 </property>
+                 <property name="text">
+                  <string>Rendu</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="1">
+                <widget class="QCheckBox" name="renderBox">
+                 <property name="statusTip">
+                  <string>Vous pouvez lancer automatiquement le rendu dès que la composition est crée. Le rendu utilisera le paramètre prédéfini nommé &quot;dutico&quot; si il existe.</string>
+                 </property>
+                 <property name="text">
+                  <string>Lancer le rendu immédiatement</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="label_9">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="statusTip">
+                  <string>Vous pouvez précomposer automatiquement les différents calques composant les clips (medias et timecodes)</string>
+                 </property>
+                 <property name="text">
+                  <string>Précomposer</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QCheckBox" name="precomposeButton">
+                 <property name="statusTip">
+                  <string>Vous pouvez précomposer automatiquement les différents calques composant les clips (medias et timecodes)</string>
+                 </property>
+                 <property name="text">
+                  <string>Chaque plan</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
                 </widget>
                </item>
               </layout>
@@ -1781,7 +1919,7 @@
            </property>
            <attribute name="icon">
             <iconset resource="ressources.qrc">
-             <normaloff>:/icons/Document Checklist.png</normaloff>:/icons/Document Checklist.png</iconset>
+             <normaloff>:/icons/quicktime</normaloff>:/icons/quicktime</iconset>
            </attribute>
            <attribute name="title">
             <string>Quicktime Text</string>
@@ -2050,142 +2188,6 @@
           </widget>
          </widget>
         </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_7">
-          <property name="leftMargin">
-           <number>3</number>
-          </property>
-          <property name="topMargin">
-           <number>3</number>
-          </property>
-          <property name="rightMargin">
-           <number>3</number>
-          </property>
-          <property name="bottomMargin">
-           <number>3</number>
-          </property>
-          <item>
-           <widget class="QToolButton" name="previousExportButton">
-            <property name="statusTip">
-             <string>Revenir à la gestion des medias.</string>
-            </property>
-            <property name="text">
-             <string>Précédent</string>
-            </property>
-            <property name="icon">
-             <iconset resource="ressources.qrc">
-              <normaloff>:/icons/Arrow Left.png</normaloff>:/icons/Arrow Left.png</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>32</width>
-              <height>32</height>
-             </size>
-            </property>
-            <property name="toolButtonStyle">
-             <enum>Qt::ToolButtonTextUnderIcon</enum>
-            </property>
-            <property name="autoRaise">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_4">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QToolButton" name="exportBrowseButton">
-            <property name="statusTip">
-             <string>Choisir le dossier de destination des exports.</string>
-            </property>
-            <property name="text">
-             <string>Parcourir...</string>
-            </property>
-            <property name="icon">
-             <iconset resource="ressources.qrc">
-              <normaloff>:/icons/savevideo.png</normaloff>:/icons/savevideo.png</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>32</width>
-              <height>32</height>
-             </size>
-            </property>
-            <property name="toolButtonStyle">
-             <enum>Qt::ToolButtonTextBesideIcon</enum>
-            </property>
-            <property name="autoRaise">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="exportNameEdit">
-            <property name="statusTip">
-             <string>Dossier de destination des exports.</string>
-            </property>
-            <property name="frame">
-             <bool>false</bool>
-            </property>
-            <property name="placeholderText">
-             <string>Chemin d'exportation</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="exportNameEdit_2">
-            <property name="statusTip">
-             <string>Nom des exports.</string>
-            </property>
-            <property name="frame">
-             <bool>false</bool>
-            </property>
-            <property name="placeholderText">
-             <string>Nom des exports</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QToolButton" name="exportButton">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="statusTip">
-             <string>Lancer l'exportation.</string>
-            </property>
-            <property name="text">
-             <string>Exporter</string>
-            </property>
-            <property name="icon">
-             <iconset resource="ressources.qrc">
-              <normaloff>:/icons/video.png</normaloff>:/icons/video.png</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>32</width>
-              <height>32</height>
-             </size>
-            </property>
-            <property name="toolButtonStyle">
-             <enum>Qt::ToolButtonTextUnderIcon</enum>
-            </property>
-            <property name="autoRaise">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
        </layout>
       </widget>
      </widget>
@@ -2206,7 +2208,7 @@
    </property>
    <widget class="QMenu" name="menuFichier">
     <property name="title">
-     <string>&amp;Fichier</string>
+     <string>&amp;Projet</string>
     </property>
     <addaction name="actionNouveau"/>
     <addaction name="actionOuvrir"/>
@@ -2227,7 +2229,7 @@
      <string>?</string>
     </property>
     <property name="icon">
-     <iconset resource="ressources.qrc">
+     <iconset>
       <normaloff>:/icons/tout_petit_logo.png</normaloff>:/icons/tout_petit_logo.png</iconset>
     </property>
     <addaction name="actionAbout"/>
@@ -2266,48 +2268,11 @@
    <addaction name="menuExport"/>
    <addaction name="menu"/>
   </widget>
-  <widget class="QToolBar" name="toolBar">
-   <property name="windowTitle">
-    <string>toolBar</string>
-   </property>
-   <property name="statusTip">
-    <string/>
-   </property>
-   <property name="movable">
-    <bool>false</bool>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>32</width>
-     <height>32</height>
-    </size>
-   </property>
-   <property name="toolButtonStyle">
-    <enum>Qt::ToolButtonTextBesideIcon</enum>
-   </property>
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-   <addaction name="actionNouveau"/>
-   <addaction name="actionOuvrir"/>
-   <addaction name="separator"/>
-   <addaction name="actionEnregistrer"/>
-   <addaction name="actionEnregistrer_sous"/>
-   <addaction name="separator"/>
-   <addaction name="actionPr_f_rences"/>
-   <addaction name="separator"/>
-   <addaction name="actionQuitter"/>
-   <addaction name="separator"/>
-   <addaction name="actionAbout"/>
-  </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionQuitter">
    <property name="icon">
     <iconset resource="ressources.qrc">
-     <normaloff>:/icons/Stop.png</normaloff>:/icons/Stop.png</iconset>
+     <normaloff>:/icons/quit</normaloff>:/icons/quit</iconset>
    </property>
    <property name="text">
     <string>Quitter</string>
@@ -2322,7 +2287,7 @@
   <action name="actionOuvrir">
    <property name="icon">
     <iconset resource="ressources.qrc">
-     <normaloff>:/icons/folder_open.png</normaloff>:/icons/folder_open.png</iconset>
+     <normaloff>:/icons/folder_open</normaloff>:/icons/folder_open</iconset>
    </property>
    <property name="text">
     <string>Ouvrir...</string>
@@ -2337,7 +2302,7 @@
   <action name="actionEnregistrer_sous">
    <property name="icon">
     <iconset resource="ressources.qrc">
-     <normaloff>:/icons/saveas.png</normaloff>:/icons/saveas.png</iconset>
+     <normaloff>:/icons/save_as</normaloff>:/icons/save_as</iconset>
    </property>
    <property name="text">
     <string>Enregistrer sous...</string>
@@ -2349,7 +2314,7 @@
   <action name="actionEnregistrer">
    <property name="icon">
     <iconset resource="ressources.qrc">
-     <normaloff>:/icons/save.png</normaloff>:/icons/save.png</iconset>
+     <normaloff>:/icons/save</normaloff>:/icons/save</iconset>
    </property>
    <property name="text">
     <string>Enregistrer</string>
@@ -2364,7 +2329,7 @@
   <action name="actionNouveau">
    <property name="icon">
     <iconset resource="ressources.qrc">
-     <normaloff>:/icons/File Add.png</normaloff>:/icons/File Add.png</iconset>
+     <normaloff>:/icons/file</normaloff>:/icons/file</iconset>
    </property>
    <property name="text">
     <string>Nouveau...</string>
@@ -2376,7 +2341,7 @@
   <action name="actionCharger_un_EDL">
    <property name="icon">
     <iconset resource="ressources.qrc">
-     <normaloff>:/icons/Document Checklist.png</normaloff>:/icons/Document Checklist.png</iconset>
+     <normaloff>:/icons/list</normaloff>:/icons/list</iconset>
    </property>
    <property name="text">
     <string>Importer un fichier de Timecodes...</string>
@@ -2391,7 +2356,7 @@
   <action name="actionExporter">
    <property name="icon">
     <iconset resource="ressources.qrc">
-     <normaloff>:/icons/video.png</normaloff>:/icons/video.png</iconset>
+     <normaloff>:/icons/file_media</normaloff>:/icons/file_media</iconset>
    </property>
    <property name="text">
     <string>Exporter</string>
@@ -2400,7 +2365,7 @@
   <action name="actionAjouter_une_couche">
    <property name="icon">
     <iconset resource="ressources.qrc">
-     <normaloff>:/icons/layersadd.png</normaloff>:/icons/layersadd.png</iconset>
+     <normaloff>:/icons/layer_add</normaloff>:/icons/layer_add</iconset>
    </property>
    <property name="text">
     <string>Ajouter une couche...</string>
@@ -2420,7 +2385,7 @@
   <action name="actionAbout">
    <property name="icon">
     <iconset resource="ressources.qrc">
-     <normaloff>:/icons/tout_petit_logo.png</normaloff>:/icons/tout_petit_logo.png</iconset>
+     <normaloff>:/icons/duduf</normaloff>:/icons/duduf</iconset>
    </property>
    <property name="text">
     <string>A propos...</string>
@@ -2432,7 +2397,7 @@
   <action name="actionPr_f_rences">
    <property name="icon">
     <iconset resource="ressources.qrc">
-     <normaloff>:/icons/cog.png</normaloff>:/icons/cog.png</iconset>
+     <normaloff>:/icons/params</normaloff>:/icons/params</iconset>
    </property>
    <property name="text">
     <string>Préférences...</string>
@@ -2447,7 +2412,7 @@
    </property>
    <property name="icon">
     <iconset resource="ressources.qrc">
-     <normaloff>:/icons/video.png</normaloff>:/icons/video.png</iconset>
+     <normaloff>:/icons/afx</normaloff>:/icons/afx</iconset>
    </property>
    <property name="text">
     <string>After Effects</string>
@@ -2459,7 +2424,7 @@
    </property>
    <property name="icon">
     <iconset resource="ressources.qrc">
-     <normaloff>:/icons/Document Checklist.png</normaloff>:/icons/Document Checklist.png</iconset>
+     <normaloff>:/icons/quicktime</normaloff>:/icons/quicktime</iconset>
    </property>
    <property name="text">
     <string>Quicktime text</string>
@@ -2471,7 +2436,7 @@
    </property>
    <property name="icon">
     <iconset resource="ressources.qrc">
-     <normaloff>:/icons/Document Checklist.png</normaloff>:/icons/Document Checklist.png</iconset>
+     <normaloff>:/icons/avid</normaloff>:/icons/avid</iconset>
    </property>
    <property name="text">
     <string>Avid Caption Plugin</string>
@@ -2483,7 +2448,7 @@
    </property>
    <property name="icon">
     <iconset resource="ressources.qrc">
-     <normaloff>:/icons/Document Checklist.png</normaloff>:/icons/Document Checklist.png</iconset>
+     <normaloff>:/icons/list</normaloff>:/icons/list</iconset>
    </property>
    <property name="text">
     <string>Edit Decision List (EDL)</string>
@@ -2492,7 +2457,7 @@
   <action name="actionFusionner_un_fichier_de_Timecodes">
    <property name="icon">
     <iconset resource="ressources.qrc">
-     <normaloff>:/icons/Document Checklist.png</normaloff>:/icons/Document Checklist.png</iconset>
+     <normaloff>:/icons/list_add</normaloff>:/icons/list_add</iconset>
    </property>
    <property name="text">
     <string>Fusionner un fichier de Timecodes...</string>
@@ -2504,7 +2469,7 @@
   <action name="actionSupprimer_les_clips">
    <property name="icon">
     <iconset resource="ressources.qrc">
-     <normaloff>:/icons/clap_remove.png</normaloff>:/icons/clap_remove.png</iconset>
+     <normaloff>:/icons/media_remove</normaloff>:/icons/media_remove</iconset>
    </property>
    <property name="text">
     <string>Supprimer les clips...</string>
