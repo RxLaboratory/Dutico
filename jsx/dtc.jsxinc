@@ -303,7 +303,7 @@ function createDTCComp(dtc)
 			var outPoint = TCOut;
 
 			//Créer la comp
-			var comp = app.project.items.addComp(clip.name, w, h, p, TCOut, fps);	
+			var comp = app.project.items.addComp(clip.name, w, h, p, TCOut, fps);
 			
 			//si on utilise des layers différents
 			if (multiLayers)
@@ -316,7 +316,6 @@ function createDTCComp(dtc)
 					var layerAdded = importLayer(layer,comp);
 					if (layerAdded == null)
 					{
-						app.project.close(CloseOptions.DO_NOT_SAVE_CHANGES);
 						continue;
 					}
 
